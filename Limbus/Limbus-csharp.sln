@@ -1,6 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{5ADFF52E-223B-168C-1FAB-61AF4DFEDF3B}") = "Limbus", "Assembly-CSharp-firstpass-vs.csproj", "{27C28007-8A9E-1DAD-CF9F-677B80DECB1E}"
+EndProject
 Project("{5ADFF52E-223B-168C-1FAB-61AF4DFEDF3B}") = "Limbus", "Assembly-CSharp-vs.csproj", "{095EB658-13C1-8A66-8B1C-A30473E5B4C7}"
 EndProject
 Project("{5ADFF52E-223B-168C-1FAB-61AF4DFEDF3B}") = "Limbus", "Assembly-CSharp-Editor-vs.csproj", "{E69C159D-F15B-99D9-2AF8-48BBABD370E5}"
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27C28007-8A9E-1DAD-CF9F-677B80DECB1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27C28007-8A9E-1DAD-CF9F-677B80DECB1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27C28007-8A9E-1DAD-CF9F-677B80DECB1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27C28007-8A9E-1DAD-CF9F-677B80DECB1E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{095EB658-13C1-8A66-8B1C-A30473E5B4C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{095EB658-13C1-8A66-8B1C-A30473E5B4C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{095EB658-13C1-8A66-8B1C-A30473E5B4C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -23,7 +29,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-		GlobalSection(MonoDevelopProperties) = preSolution
+																																					GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

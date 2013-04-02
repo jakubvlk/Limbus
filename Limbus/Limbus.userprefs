@@ -1,10 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Units\Enemy Units\EnemyUnit.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Units\Enemy Units\GroundUnit.cs">
     <Files>
-      <File FileName="Assets\Scripts\Units\DefaultUnit.cs" Line="11" Column="16" />
-      <File FileName="Assets\Scripts\Units\ExtendedUnit.cs" Line="17" Column="1" />
-      <File FileName="Assets\Scripts\Units\Enemy Units\EnemyUnit.cs" Line="23" Column="3" />
+      <File FileName="Assets\PathManager.cs" Line="74" Column="4" />
+      <File FileName="Assets\Scripts\Units\Enemy Units\GroundUnit.cs" Line="5" Column="2" />
+      <File FileName="Assets\Scripts\Units\Enemy Units\EnemyUnit.cs" Line="6" Column="39" />
+      <File FileName="Assets\Scripts\Units\Base.cs" Line="13" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
