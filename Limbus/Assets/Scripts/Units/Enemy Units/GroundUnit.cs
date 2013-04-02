@@ -6,8 +6,7 @@ public class GroundUnit : EnemyUnit
 	// Use this for initialization
 	void Start ()
 	{
-		
-		pathManager = (PathManager)GameObject.FindObjectOfType(typeof(PathManager));
+		pathManager = (PathManager) GameObject.FindObjectOfType(typeof(PathManager));
 		waypoints = pathManager.Waypoints;
 		myTransform = transform;
 		
