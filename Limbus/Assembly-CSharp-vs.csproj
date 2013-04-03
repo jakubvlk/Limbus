@@ -122,8 +122,8 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITiledSprite.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
-     <Compile Include="Assets\PathManager.cs" />
      <Compile Include="Assets\Scripts\InGameGUI.cs" />
+     <Compile Include="Assets\Scripts\PathManager.cs" />
      <Compile Include="Assets\Scripts\Units\Base.cs" />
      <Compile Include="Assets\Scripts\Units\DefaultUnit.cs" />
      <Compile Include="Assets\Scripts\Units\Enemy Units\EnemyUnit.cs" />
@@ -132,7 +132,7 @@
      <None Include="Assets\NGUI\Resources\Shaders\Depth.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
-     <None Include="Assets\Nobiax Free Rocks\Nobiax Free Rocks.txt" />
+     <None Include="Assets\_Models\Environment of Levels\Nobiax Free Rocks\Nobiax Free Rocks.txt" />
      <None Include="Assets\NGUI Items\Fonts\Xscale_42.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Masked Colored.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
@@ -140,13 +140,14 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
      <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
+     <None Include="Assets\_Models\Units\Allies Units\Turret\Shaders\AlphaTest_Complete.shader" />
      <None Include="Assets\NGUI Items\Fonts\Xscale_32.txt" />
      <None Include="Assets\NGUI\ReadMe.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (HardClip).shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored Overlay.shader" />
      <None Include="Assets\NGUI\Examples\Other\English.txt" />
-     <None Include="Assets\Units\Enemy Units\Mine-resistant armored vehicle\license.txt" />
+     <None Include="Assets\_Models\Units\Enemy Units\Mine-resistant armored vehicle\license.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed).shader" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Additive Colored.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />

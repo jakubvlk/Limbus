@@ -1,10 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class InGameGUI : MonoBehaviour {
-	
-	//TODO: defaultne nic nevybrat; pridat jeste jednu vez; pri kliku na btn, zmenit structuruIndex
-	
+public class InGameGUI : MonoBehaviour
+{
 	public Transform placementPlanesRoot;
 	public Material hoverMat;
 	public LayerMask placementLayerMask;
@@ -25,13 +23,15 @@ public class InGameGUI : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		structureIndex = 0;
+		// If structure index is -1, than no button is pressed
+		structureIndex = -1;
 		UpdateGUI();
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
+		// Cast ray from camera through the current position of a mouse
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		
@@ -55,23 +55,49 @@ public class InGameGUI : MonoBehaviour {
 			}
 		}
 		
+		// building of tower
 		if (Input.GetMouseButtonDown(0) && lastHitObj)
 		{
 			if (lastHitObj.tag == "PlacementPlane_Open")
 			{
 				GameObject newStructure = (GameObject)Instantiate(allStructures[structureIndex], lastHitObj.transform.position, Quaternion.identity);
-				Vector3 localEulerAngles = newStructure.transform.localEulerAngles;
-				localEulerAngles.y = Random.Range(0, 360);
-				newStructure.transform.localEulerAngles = localEulerAngles;
 				lastHitObj.tag = "PlacementPlane_Closed";
 			}
+		}
+		
+		// canceling of the building mode
+		if (Input.GetMouseButtonDown(1))
+		{
+			structureIndex = -1;
+			if (lastHitObj)
+			{
+				lastHitObj.renderer.material = originalMat;
+				lastHitObj = null;
+			}
+			
+			SetActivePlacementPlanes(false);
+			
+			UpdateGUI();
 		}
 	}
 	
 	// On button click
-	public void OnClick()
+	public void OnClick(GameObject btnObj)
 	{
-		print("click!!!");
+		
+		// IF you change name of the button in editor you have to change name here as well!!!
+		switch (btnObj.name)
+		{
+			case "btn_machineGun":
+				structureIndex = 0;
+				break;
+			case "btn_Anti-aircraft_Satellite":
+				structureIndex = 1;
+				break;
+		}
+		SetActivePlacementPlanes(true);
+	
+		UpdateGUI();
 	}
 	
 	private void UpdateGUI()
@@ -81,6 +107,15 @@ public class InGameGUI : MonoBehaviour {
 			theBtnGraphic.color = offColor;	
 		}
 		
-		buildBtnGraphics[structureIndex].color = onColor;
+		// If is selected something...
+		if (structureIndex != -1)
+		{
+			buildBtnGraphics[structureIndex].color = onColor;
+		}
+	}
+	
+	private void SetActivePlacementPlanes(bool val)
+	{
+		placementPlanesRoot.gameObject.SetActive(val);
 	}
 }
