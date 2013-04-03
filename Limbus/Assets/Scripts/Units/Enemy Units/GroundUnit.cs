@@ -3,11 +3,13 @@ using System.Collections;
 
 public class GroundUnit : EnemyUnit
 {	
+	// TODO: volat funkce v startu uz v EnemyUnit???
+	// TODO: pridat do groundUnit pathManager jako komponentu (je nutne za behu??? - je protoze do prefabu se da pretahnout jenom prefab),
+				//  pridat do PathManageru dalsi 2 pole na waypointy - pak se podle tagu rozhodnout, ktere skutecne ulozit do waypoints[]
+	// 			- je nutne to mit teda jako objekt, kdyz to pridam ke kazde jednotce????
 	// Use this for initialization
 	void Start ()
 	{
-		pathManager = (PathManager) GameObject.FindObjectOfType(typeof(PathManager));
-		waypoints = pathManager.Waypoints;
 		myTransform = transform;
 		
 		//look at first waypoint

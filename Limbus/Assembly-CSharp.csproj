@@ -123,6 +123,8 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
      <Compile Include="Assets\Scripts\InGameGUI.cs" />
+     <Compile Include="Assets\Scripts\LoadLevel.cs" />
+     <Compile Include="Assets\Scripts\LoadWaves.cs" />
      <Compile Include="Assets\Scripts\PathManager.cs" />
      <Compile Include="Assets\Scripts\Units\Base.cs" />
      <Compile Include="Assets\Scripts\Units\DefaultUnit.cs" />
@@ -130,6 +132,7 @@
      <Compile Include="Assets\Scripts\Units\Enemy Units\GroundUnit.cs" />
      <Compile Include="Assets\Scripts\Units\ExtendedUnit.cs" />
      <None Include="Assets\NGUI\Resources\Shaders\Depth.shader" />
+     <None Include="Assets\_Models\Units\Allies Units\Satellite Dish - by ConceptX\FBX\S_SatelliteDish_ConceptX.obj.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
      <None Include="Assets\_Models\Environment of Levels\Nobiax Free Rocks\Nobiax Free Rocks.txt" />
@@ -138,6 +141,7 @@
      <None Include="Assets\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
+     <None Include="Assets\XMLs\level1_waves.xml" />
      <None Include="Assets\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
      <None Include="Assets\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
      <None Include="Assets\_Models\Units\Allies Units\Machinegun\Shaders\AlphaTest_Complete.shader" />

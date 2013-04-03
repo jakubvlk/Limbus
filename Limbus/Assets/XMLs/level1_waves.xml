@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf8"?>
+
+<waves>
+	<wave>
+		<name>Wave 1</name>
+		<unit>
+			<unitIndex>0</unitIndex>
+			<name>Light Armored Vehicle</name>
+			<count>5</count>
+			<respawnIn>1.5</respawnIn>
+		</unit>
+	</wave>
+	<wave>
+		<name>Wave 2</name>
+		<unit>
+			<unitIndex>0</unitIndex>
+			<name>Light Armored Vehicle</name>
+			<count>6</count>
+			<respawnIn>1.5</respawnIn>
+		</unit>
+	</wave>
+</waves>

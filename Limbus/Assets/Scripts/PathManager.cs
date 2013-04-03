@@ -5,7 +5,7 @@ public class PathManager :MonoBehaviour {
 	
 	// Privates
 	private Transform[] waypoints;	
-	private int index = 0;
+	private int index;
 	private Vector3 direction;
 	
 	// Publics
@@ -13,10 +13,10 @@ public class PathManager :MonoBehaviour {
 	public GameObject allWaypoints;
 	
 	#region Getters & Setters
+	
 	public Transform[] Waypoints
 	{
-		get { 
-			return waypoints; }
+		get { return waypoints; }
 	}
 	
 	public int Index
@@ -27,14 +27,13 @@ public class PathManager :MonoBehaviour {
 	
 	public Transform CurrentWaypoint
 	{
-		get { 
-			return waypoints[index]; }
+		get { return waypoints[index]; }
 	}
 	
 	#endregion
 	
 	void Awake()
-	{
+	{		
 		waypoints = new Transform[allWaypoints.GetComponentsInChildren<Transform>().Length - 1];
 		
 		int i = 0;
@@ -47,25 +46,12 @@ public class PathManager :MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		
+		index = 0;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		
-		/*vehicle.transform.rotation = Quaternion.Lerp(vehicle.transform.rotation, Quaternion.LookRotation(direction),  Time.deltaTime*15);
-		
-		vehicle.transform.Translate(Vector3.forward * speed * Time.deltaTime);
-		//vehicle.transform.rotation = Quaternion.Lerp(vehicle.transform.rotation, waypoints[index].rotation, Time.deltaTime * 10);
-		if (Vector3.Distance(vehicle.transform.position, waypoints[index].position) < 1f)
-		{
-			index++;
-			//vehicle.transform.LookAt(waypoints[index].position);
-			direction = waypoints[index].position - vehicle.transform.position ;
-			direction = direction.normalized;
-		}
-		//vehicle.transform.Translate(*/
 	}
 	
 	public void CheckNewWaypoint(Vector3 position)
@@ -82,5 +68,10 @@ public class PathManager :MonoBehaviour {
 				}
 			}
 		}
+	}
+	
+	public void InitWaypoints( GameObject allWayp)
+	{
+		allWaypoints = allWayp;
 	}
 }

@@ -113,7 +113,6 @@ public class InGameGUI : MonoBehaviour
 		// If is selected something...
 		if (structureIndex != -1)
 		{
-			print("red");
 			buildBtnGraphics[structureIndex].color = onColor;
 		}
 	}
