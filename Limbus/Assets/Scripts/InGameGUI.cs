@@ -85,14 +85,17 @@ public class InGameGUI : MonoBehaviour
 	public void OnClick(GameObject btnObj)
 	{
 		
-		// IF you change name of the button in editor you have to change name here as well!!!
+		// IF you change name of the button in editor you have to change name here as well!!
 		switch (btnObj.name)
 		{
-			case "btn_machineGun":
+			case "btn_MachineGun":
 				structureIndex = 0;
 				break;
 			case "btn_Anti-aircraft_Satellite":
 				structureIndex = 1;
+				break;
+			case "btn_GrenadeLauncher":
+				structureIndex = 2;
 				break;
 		}
 		SetActivePlacementPlanes(true);
@@ -110,6 +113,7 @@ public class InGameGUI : MonoBehaviour
 		// If is selected something...
 		if (structureIndex != -1)
 		{
+			print("red");
 			buildBtnGraphics[structureIndex].color = onColor;
 		}
 	}
