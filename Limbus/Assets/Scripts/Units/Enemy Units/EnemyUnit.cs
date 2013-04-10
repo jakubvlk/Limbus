@@ -11,16 +11,18 @@ public class EnemyUnit : MonoBehaviour {
 	
 	#region Getters & Setters
 	
-	public Vector3 RespawnPoint {
-		get {
-			return pathManager.CurrentWaypoint.position; }
+	public Vector3 RespawnPoint
+	{
+		get 
+		{
+			return pathManager.CurrentWaypoint.position; 
+		}
 	}
 	
 	#endregion
 	
 	void Awake()
 	{
-		print(GameObject.FindObjectOfType(typeof(PathManager)) as PathManager);
 		pathManager = GameObject.FindObjectOfType(typeof(PathManager)) as PathManager;
 		
 		// Automaticly assign correct waypoints to the pathManager.
@@ -29,10 +31,15 @@ public class EnemyUnit : MonoBehaviour {
 			case "GroundEnemy":
 				pathManager.InitWaypoints(GameObject.Find("GroundWaypoints"));
 				break;
+			case "WaterEnemy":
+				pathManager.InitWaypoints(GameObject.Find("WaterWaypoints"));
+				break;
+			case "AirEnemy":
+				pathManager.InitWaypoints(GameObject.Find("AirWaypoints"));
+				break;
 			
 			default:
 				throw new NotImplementedException();
-				// add water, air tag and complete this case...
 				break;
 		}
 	}

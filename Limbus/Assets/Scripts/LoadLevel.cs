@@ -9,20 +9,18 @@ public class LoadLevel : MonoBehaviour {
 	public GameObject[] allUnits;
 	
 	// Privates
-	private float respawnTimer;
-	
-	// struktura pro vsechny potrebne informace o respawnu???	
-	private int unitIndex = 0;
-	private	int count = 5;
-	private	float nextRespawnIn = 1.5f;
-	// --------------------------------------
+	private float respawnTimer, waveRespawnTimer;
+	private int numOfWaves;
+	private Wave[] wave;
+	private LoadWaves loadWaves;
 	
 	// Use this for initialization
 	void Start ()
 	{		
-		respawnTimer = Time.time;
-	
-		unitIndex = 0;
+		respawnTimer = waveRespawnTimer = Time.time;
+		numOfWaves = 0;
+		loadWaves = GameObject.FindObjectOfType(typeof(LoadWaves)) as LoadWaves;
+		wave = loadWaves.Wave;
 	}	
 	
 	// Update is called once per frame
@@ -33,13 +31,33 @@ public class LoadLevel : MonoBehaviour {
 	
 	void Respawn ()
 	{
-		if (count > 0 && Time.time >= respawnTimer + nextRespawnIn)
+		//TODO: predelat na zjisteni z xml ?? jak ??
+		// If it isn't last wave ...
+		if (numOfWaves < loadWaves.NumOfWaves)
 		{
-			GameObject newVehicle = (GameObject) Instantiate((GameObject)allUnits[unitIndex], Vector3.zero, Quaternion.identity);
-			newVehicle.transform.position = newVehicle.GetComponent<EnemyUnit>().RespawnPoint;
+			if (wave[numOfWaves].Unit.Count > 0 && Time.time >= respawnTimer + wave[numOfWaves].Unit.RespawnIn)
+			{
+				GameObject newUnit = (GameObject) Instantiate((GameObject)allUnits[wave[numOfWaves].Unit.UnitIndex], Vector3.zero, Quaternion.identity);
+				newUnit.transform.position = newUnit.GetComponent<EnemyUnit>().RespawnPoint;
+				
+				respawnTimer = Time.time;
+				
+				// decrement num of unit to go
+				Unit tmp = wave[numOfWaves].Unit;
+				tmp.Count--;
+				wave[numOfWaves].Unit = tmp;
+			}
 			
-			respawnTimer = Time.time;
-			count--;
+			// If one wave ended...
+			if (wave[numOfWaves].Unit.Count == 0)
+			{
+				//waveRespawnTimer = Time.time + wave[numOfWaves].PauseAfer;
+				
+				if (Time.time > respawnTimer + wave[numOfWaves].PauseAfer)
+				{
+					numOfWaves++;
+				}
+			}
 		}
 	}
 }

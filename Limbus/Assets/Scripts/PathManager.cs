@@ -7,10 +7,7 @@ public class PathManager :MonoBehaviour {
 	private Transform[] waypoints;	
 	private int index;
 	private Vector3 direction;
-	
-	// Publics
-	public float speed = 10f;
-	public GameObject allWaypoints;
+	private GameObject allWaypoints;	
 	
 	#region Getters & Setters
 	

@@ -9,6 +9,8 @@ Project("{5ADFF52E-223B-168C-1FAB-61AF4DFEDF3B}") = "Limbus", "Assembly-CSharp-E
 EndProject
 Project("{5ADFF52E-223B-168C-1FAB-61AF4DFEDF3B}") = "Limbus", "Assembly-UnityScript-firstpass.unityproj", "{4ED3AA7E-5761-37C5-2D50-4AB69A4D18B4}"
 EndProject
+Project("{5ADFF52E-223B-168C-1FAB-61AF4DFEDF3B}") = "Limbus", "Assembly-UnityScript.unityproj", "{4079A143-1F24-E5B7-5B4B-AA898C05265E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,11 +33,15 @@ Global
 		{4ED3AA7E-5761-37C5-2D50-4AB69A4D18B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ED3AA7E-5761-37C5-2D50-4AB69A4D18B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ED3AA7E-5761-37C5-2D50-4AB69A4D18B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4079A143-1F24-E5B7-5B4B-AA898C05265E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4079A143-1F24-E5B7-5B4B-AA898C05265E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4079A143-1F24-E5B7-5B4B-AA898C05265E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4079A143-1F24-E5B7-5B4B-AA898C05265E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																					GlobalSection(MonoDevelopProperties) = preSolution
+																																																																												GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
