@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ExtendedUnit : MonoBehaviour {
 	
-	public float power, cost, range;
+	public float power, cost;
 	
 	// Use this for initialization
 	void Start ()
