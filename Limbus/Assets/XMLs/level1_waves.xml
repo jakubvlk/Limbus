@@ -6,12 +6,12 @@
 	<wave>
 		<name>Wave 2</name>
 		<unit>
-			<unitIndex>1</unitIndex>
+			<unitIndex>2</unitIndex>
 			<name>Light Armored Vehicle</name>
-			<count>5</count>
+			<count>1</count>
 			<respawnIn>1.5</respawnIn>
 		</unit>
-		<pauseAfter>5</pauseAfter>
+		<pauseAfter>60</pauseAfter>
 	</wave>
 	
 	<wave>

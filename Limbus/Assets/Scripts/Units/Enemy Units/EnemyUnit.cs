@@ -4,8 +4,12 @@ using System;
 
 public class EnemyUnit : ExtendedUnit {
 	
+	// TODO: 1) pridat zvuk pohybu tanku - pravdepodobne je treba pridat vic audiosourcu... pak ale vsude O.o popremyslet a vygooglit!!!
+	// najit lepsi zvuk pohybu tanku 2) udelat fire rate za minutu (specialne na tank je to duuulezite)
+	
 	public float speed, turnSpeed = 3f;
 	public int reward;
+	public AudioClip movingSound;
 
 	protected PathManager pathManager;
 	
@@ -58,7 +62,18 @@ public class EnemyUnit : ExtendedUnit {
 	// Update is called once per frame
 	void Update ()
 	{
+		
+		// TODO: proc se hybe smerem ke kulometu???
+		base.Update();
 		Move();
+	}
+	
+	protected override void OnTriggerStay(Collider other)
+	{		
+		if (!myTarget && other.tag == "Tower")
+		{
+			myTarget = other.transform;
+		}
 	}
 	
 	private void Move ()
@@ -74,15 +89,19 @@ public class EnemyUnit : ExtendedUnit {
 		myTransform.Translate(Vector3.forward * speed * Time.deltaTime);		
 	}
 	
-	private void AddScore()
+	private void AddScoreAndMoney()
 	{
-		gameMaster.score += reward;
+		
+		// TODO: jak pocitat skore???
+		//gameMaster.score += ;
+		
+		gameMaster.money += reward;
 		gameMaster.UpdateGUI();
 	}
 	
-	protected override void Die()
+	protected override void Destroy()
 	{
-		Destroy();
-		AddScore();
+		base.Destroy();
+		AddScoreAndMoney();
 	}
 }

@@ -8,7 +8,8 @@ public class ExtendedUnit : DefaultUnit {
 	public float power;
 	public GameObject explosion;
 	
-	protected Transform myTarget;	
+	// TODO: dat pak na protected
+	public Transform myTarget;	
 	protected Quaternion desiredRotation;
 	
 	// Use this for initialization
@@ -18,13 +19,15 @@ public class ExtendedUnit : DefaultUnit {
 		
 	}
 	
-	private void Update()
+	protected virtual void Update()
 	{
 		if (myTarget)
 		{
 			CalculateAimPosition(myTarget.position - turret.position);
-			myTransform.rotation = Quaternion.Lerp(turret.rotation, desiredRotation, Time.deltaTime * turretRotationSpeed);
+			turret.rotation = Quaternion.Lerp(turret.rotation, desiredRotation, Time.deltaTime * turretRotationSpeed);
 					
+			print(myTransform.rotation);
+			
 			Fire();
 		}
 	}
@@ -65,16 +68,11 @@ public class ExtendedUnit : DefaultUnit {
 		currHealth -= healthLost;
 		if (currHealth <= 0)
 		{
-			Die();
+			Destroy();
 		}
 	}
 
-	protected virtual void Die()
-	{
-		Destroy();
-	}
-	
-	protected void Destroy()
+	protected virtual void Destroy()
 	{
 		Instantiate(explosion, myTransform.position, Quaternion.identity);
 		Destroy(gameObject);
