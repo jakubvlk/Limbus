@@ -15,6 +15,7 @@ public class ExtendedUnit : DefaultUnit {
 	virtual protected void Start ()
 	{
 		base.Start();
+		
 	}
 	
 	private void Update()
@@ -49,7 +50,6 @@ public class ExtendedUnit : DefaultUnit {
 	{
 		if (!audio.isPlaying)
 			audio.Play();
-		print("fireeee");
 		myTarget.GetComponent<ExtendedUnit>().GetHit(power);
 	}
 	
@@ -69,15 +69,14 @@ public class ExtendedUnit : DefaultUnit {
 		}
 	}
 
-	private void Die ()
+	protected virtual void Die()
+	{
+		Destroy();
+	}
+	
+	protected void Destroy()
 	{
 		Instantiate(explosion, myTransform.position, Quaternion.identity);
 		Destroy(gameObject);
-		print("Dieeeeeeeeeeeeeeeeeeeee motherfucker!!!");
-	}
-	
-	void Explode ()
-	{
-		throw new System.NotImplementedException ();
 	}
 }

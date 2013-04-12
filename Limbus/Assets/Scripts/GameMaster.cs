@@ -1,12 +1,17 @@
 using UnityEngine;
 using System.Collections;
 
-public class LoadLevel : MonoBehaviour {
-	
-	// Publics
+public class GameMaster : MonoBehaviour
+{	
+	public int lifes = 5;
+	public int money = 1000;
+	public int score = 0;
 	public int levelNumber;
 	public Transform groundRespawn, airRespawn, waterRespawn;
 	public GameObject[] allUnits;
+	
+	// GUI
+	public UILabel waveText, scoreText, lifesText, moneyText;
 	
 	// Privates
 	private float respawnTimer, waveRespawnTimer;
@@ -20,7 +25,10 @@ public class LoadLevel : MonoBehaviour {
 		respawnTimer = waveRespawnTimer = Time.time;
 		numOfWaves = 0;
 		loadWaves = GameObject.FindObjectOfType(typeof(LoadWaves)) as LoadWaves;
+		loadWaves.LoadAllWaves();
 		wave = loadWaves.Wave;
+		
+		UpdateGUI();
 	}	
 	
 	// Update is called once per frame
@@ -29,9 +37,16 @@ public class LoadLevel : MonoBehaviour {
 		Respawn ();
 	}
 	
+	public void UpdateGUI()
+	{
+		waveText.text = @"Wave: " + (numOfWaves + 1);
+		scoreText.text = @"Score: " + score;
+		moneyText.text = @"Money: " + money;
+		lifesText.text = @"Lifes: " + lifes;
+	}
+	
 	void Respawn ()
 	{
-		//TODO: predelat na zjisteni z xml ?? jak ??
 		// If it isn't last wave ...
 		if (numOfWaves < loadWaves.NumOfWaves)
 		{
@@ -56,6 +71,7 @@ public class LoadLevel : MonoBehaviour {
 				if (Time.time > respawnTimer + wave[numOfWaves].PauseAfer)
 				{
 					numOfWaves++;
+					UpdateGUI();
 				}
 			}
 		}

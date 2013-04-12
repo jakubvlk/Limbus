@@ -4,9 +4,12 @@ using System;
 
 public class EnemyUnit : ExtendedUnit {
 	
-	public float speed, reward, turnSpeed = 3f;
+	public float speed, turnSpeed = 3f;
+	public int reward;
 
 	protected PathManager pathManager;
+	
+	private GameMaster gameMaster;
 	
 	#region Getters & Setters
 	
@@ -49,6 +52,7 @@ public class EnemyUnit : ExtendedUnit {
 		base.Start();
 		
 		myTransform.LookAt(pathManager.CurrentWaypoint.position);
+		gameMaster = GameObject.FindObjectOfType(typeof(GameMaster)) as GameMaster;
 	}
 	
 	// Update is called once per frame
@@ -68,5 +72,17 @@ public class EnemyUnit : ExtendedUnit {
 		
 		// Moving forward
 		myTransform.Translate(Vector3.forward * speed * Time.deltaTime);		
+	}
+	
+	private void AddScore()
+	{
+		gameMaster.score += reward;
+		gameMaster.UpdateGUI();
+	}
+	
+	protected override void Die()
+	{
+		Destroy();
+		AddScore();
 	}
 }

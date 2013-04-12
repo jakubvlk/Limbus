@@ -122,8 +122,8 @@
      <Compile Include="Assets\NGUI\NGUI\Scripts\UI\UITiledSprite.cs" />
      <Compile Include="Assets\NGUI\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\NGUI\Scripts\UI\UIViewport.cs" />
+     <Compile Include="Assets\Scripts\GameMaster.cs" />
      <Compile Include="Assets\Scripts\InGameGUI.cs" />
-     <Compile Include="Assets\Scripts\LoadLevel.cs" />
      <Compile Include="Assets\Scripts\LoadWaves.cs" />
      <Compile Include="Assets\Scripts\PathManager.cs" />
      <Compile Include="Assets\Scripts\Units\Allies Units\Satellite.cs" />

@@ -12,7 +12,6 @@ public class LoadWaves : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{		
-		LoadAllWaves();
 	}
 	
 	// Update is called once per frame
@@ -21,7 +20,7 @@ public class LoadWaves : MonoBehaviour {
 	
 	}
 
-	private void LoadAllWaves ()
+	public void LoadAllWaves ()
 	{
 		// XML loading
 		XmlDocument xmlDoc = new XmlDocument(); // xmlDoc is the new xml document.

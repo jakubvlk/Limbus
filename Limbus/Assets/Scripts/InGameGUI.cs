@@ -18,6 +18,8 @@ public class InGameGUI : MonoBehaviour
 	
 	private int structureIndex;
 	
+	private GameMaster gameMaster;
+	
 	
 	
 	// Use this for initialization
@@ -25,6 +27,7 @@ public class InGameGUI : MonoBehaviour
 	{
 		// If structure index is -1, than no button is pressed
 		structureIndex = -1;
+		gameMaster = GameObject.FindObjectOfType(typeof(GameMaster)) as GameMaster;
 		UpdateGUI();
 	}
 	
@@ -58,10 +61,21 @@ public class InGameGUI : MonoBehaviour
 		// building of tower
 		if (Input.GetMouseButtonDown(0) && lastHitObj)
 		{
-			if (lastHitObj.tag == "PlacementPlane_Open")
+			// enough money?..
+			if (gameMaster.money >= allStructures[structureIndex].GetComponent<Tower>().price)
+			{			
+				if (lastHitObj.tag == "PlacementPlane_Open")
+				{
+					GameObject newStructure = (GameObject)Instantiate(allStructures[structureIndex], lastHitObj.transform.position, Quaternion.identity);
+					lastHitObj.tag = "PlacementPlane_Closed";
+					
+					gameMaster.money -= allStructures[structureIndex].GetComponent<Tower>().price;
+					gameMaster.UpdateGUI();
+				}
+			}
+			else
 			{
-				GameObject newStructure = (GameObject)Instantiate(allStructures[structureIndex], lastHitObj.transform.position, Quaternion.identity);
-				lastHitObj.tag = "PlacementPlane_Closed";
+				print(@"**********Not enough money!**********");
 			}
 		}
 		
@@ -84,7 +98,6 @@ public class InGameGUI : MonoBehaviour
 	// On button click
 	public void OnClick(GameObject btnObj)
 	{
-		
 		// IF you change name of the button in editor you have to change name here as well!!
 		switch (btnObj.name)
 		{
@@ -97,9 +110,9 @@ public class InGameGUI : MonoBehaviour
 			case "btn_GrenadeLauncher":
 				structureIndex = 2;
 				break;
-		}
-		SetActivePlacementPlanes(true);
-	
+		}	
+		
+		SetActivePlacementPlanes(true);		
 		UpdateGUI();
 	}
 	
@@ -120,5 +133,26 @@ public class InGameGUI : MonoBehaviour
 	private void SetActivePlacementPlanes(bool val)
 	{
 		placementPlanesRoot.gameObject.SetActive(val);
+	}
+	
+	private void Buy(GameObject btnObj)
+	{
+		
+		
+		// not enough money?
+		if (gameMaster.money < allStructures[structureIndex].GetComponent<Tower>().price)
+		{
+			structureIndex = -1;
+			SetActivePlacementPlanes(false);
+		}
+		else
+		{
+			
+			SetActivePlacementPlanes(true);
+			
+			
+			
+			
+		}
 	}
 }
