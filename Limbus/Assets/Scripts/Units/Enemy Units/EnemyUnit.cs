@@ -2,11 +2,10 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class EnemyUnit : MonoBehaviour {
+public class EnemyUnit : ExtendedUnit {
 	
 	public float speed, reward, turnSpeed = 3f;
-	
-	protected Transform myTransform;
+
 	protected PathManager pathManager;
 	
 	#region Getters & Setters
@@ -45,19 +44,29 @@ public class EnemyUnit : MonoBehaviour {
 	}
 	
 	// Use this for initialization
-	void Start ()
+	virtual protected void Start ()
 	{
-
+		base.Start();
+		
+		myTransform.LookAt(pathManager.CurrentWaypoint.position);
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-	
+		Move();
 	}
 	
-	void Move ()
+	private void Move ()
 	{
-		throw new System.NotImplementedException ();
+		// Check if waypoint is changing
+		pathManager.CheckNewWaypoint(myTransform.position);
+		
+		// Rotation
+		Quaternion desiredRotation = Quaternion.LookRotation(pathManager.CurrentWaypoint.position - myTransform.position);
+		myTransform.rotation = Quaternion.Slerp(myTransform.rotation, desiredRotation, Time.deltaTime * turnSpeed);
+		
+		// Moving forward
+		myTransform.Translate(Vector3.forward * speed * Time.deltaTime);		
 	}
 }

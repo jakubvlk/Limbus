@@ -3,16 +3,17 @@ using System.Collections;
 
 public class DefaultUnit : MonoBehaviour {
 	
-	float lifes;
+	public float maxHealth;
+	
+	protected Transform myTransform;
+	protected float currHealth;
 	
 	// Use this for initialization
-	void Start ()
+	virtual protected void Start ()
 	{
-		lifes = 100f;	
+		myTransform = transform;
+		currHealth = maxHealth;
 	}
 	
-	// Update is called once per frame
-	void Update () {
 	
-	}
 }
