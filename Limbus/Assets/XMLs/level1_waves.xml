@@ -17,7 +17,7 @@
 	<wave>
 		<name>Wave 2</name>
 		<unit>
-			<unitIndex>3</unitIndex>
+			<unitIndex>4</unitIndex>
 			<name>Boat</name>
 			<count>5</count>
 			<respawnIn>3</respawnIn>
