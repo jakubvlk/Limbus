@@ -9,6 +9,8 @@ public class ExtendedUnit : DefaultUnit {
 	public GameObject explosion;
 	public AudioClip fireSound, turretRotationSound;
 	public int fireRatePerMin;
+	public GameObject projectile;
+	public Transform[] muzzleTransform;
 	
 	// TODO: dat pak na protected
 	public Transform myTarget;	
@@ -41,9 +43,26 @@ public class ExtendedUnit : DefaultUnit {
 					turretRotationAS.Play();
 			}
 			
-			if (Time.time >= fireTimer + firePause)
+			float direction;			
+			// TMP - so far, not all of units have turrets!
+			// TODO: fix it :-)
+			if (turret)
+			{
+				Vector3 dir = (myTarget.position - turret.position).normalized;			
+				direction = Vector3.Dot(dir, turret.forward);
+			}
+			else
+			{
+				Vector3 dir = (myTarget.position - myTransform.position).normalized;			
+				direction = Vector3.Dot(dir, myTransform.forward);
+			}
+			
+			// If timer is OK and the target is infront of us!
+			if (Time.time >= fireTimer + firePause && direction > 0)
 				Fire();
 		}
+		
+		
 	}
 	
 	protected virtual void OnTriggerStay(Collider other)
@@ -78,6 +97,14 @@ public class ExtendedUnit : DefaultUnit {
 		if (fireRatePerMin <= 0)
 			fireRatePerMin = 1;
 		firePause = 60f / fireRatePerMin;
+		
+		// Fire missle
+		if (projectile)
+		{
+			int muzzleIndex = Random.Range(0, muzzleTransform.Length);
+			GameObject newMissile = Instantiate(projectile, muzzleTransform[muzzleIndex].position, muzzleTransform[muzzleIndex].rotation) as GameObject;
+			newMissile.GetComponent<Missile>().MyTarget = myTarget;
+		}
 		
 		// Get a hit
 		myTarget.GetComponent<ExtendedUnit>().GetHit(power);

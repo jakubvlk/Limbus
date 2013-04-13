@@ -4,40 +4,51 @@
 	<numOfWaves>5</numOfWaves>	
 	
 	<wave>
-		<name>Wave 2</name>
+		<name>Wave 1</name>
 		<unit>
-			<unitIndex>1</unitIndex>
-			<name>Light Armored Vehicle</name>
-			<count>1</count>
-			<respawnIn>1.5</respawnIn>
-		</unit>
-		<pauseAfter>60</pauseAfter>
-	</wave>
-	
-	<wave>
-		<name>Wave -1</name>
-		<unit>
-			<unitIndex>4</unitIndex>
-			<name>Helicopter</name>
-			<count>2</count>
+			<unitIndex>2</unitIndex>
+			<name>Tank</name>
+			<count>3</count>
 			<respawnIn>5</respawnIn>
 		</unit>
-		<pauseAfter>5</pauseAfter>
+		<pauseAfter>3</pauseAfter>
 	</wave>
 	
 	<wave>
-		<name>Wave 0</name>
+		<name>Wave 2</name>
 		<unit>
 			<unitIndex>3</unitIndex>
 			<name>Boat</name>
 			<count>5</count>
 			<respawnIn>3</respawnIn>
 		</unit>
+		<pauseAfter>0</pauseAfter>
+	</wave>
+	
+	<wave>
+		<name>Wave 3</name>
+		<unit>
+			<unitIndex>4</unitIndex>
+			<name>Helicopter</name>
+			<count>2</count>
+			<respawnIn>5</respawnIn>
+		</unit>
+		<pauseAfter>0</pauseAfter>
+	</wave>
+	
+	<wave>
+		<name>Wave 4</name>
+		<unit>
+			<unitIndex>1</unitIndex>
+			<name>Humvee</name>
+			<count>5</count>
+			<respawnIn>1.5</respawnIn>
+		</unit>
 		<pauseAfter>5</pauseAfter>
 	</wave>
 	
 	<wave>
-		<name>Wave 1</name>
+		<name>Wave 5</name>
 		<unit>
 			<unitIndex>0</unitIndex>
 			<name>Soldiers</name>
@@ -47,16 +58,4 @@
 		<pauseAfter>5</pauseAfter>
 	</wave>
 	
-	
-	
-	<wave>
-		<name>Wave 3</name>
-		<unit>
-			<unitIndex>2</unitIndex>
-			<name>Tank</name>
-			<count>3</count>
-			<respawnIn>5</respawnIn>
-		</unit>
-		<pauseAfter>5</pauseAfter>
-	</wave>
 </waves>

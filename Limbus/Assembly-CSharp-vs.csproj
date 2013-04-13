@@ -125,6 +125,7 @@
      <Compile Include="Assets\Scripts\GameMaster.cs" />
      <Compile Include="Assets\Scripts\InGameGUI.cs" />
      <Compile Include="Assets\Scripts\LoadWaves.cs" />
+     <Compile Include="Assets\Scripts\Missile.cs" />
      <Compile Include="Assets\Scripts\PathManager.cs" />
      <Compile Include="Assets\Scripts\Units\Allies Units\Satellite.cs" />
      <Compile Include="Assets\Scripts\Units\Allies Units\Tower.cs" />

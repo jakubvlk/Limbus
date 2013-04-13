@@ -5,3 +5,5 @@ TODO:
 - prebijeni?
 - zkusit predelat pohyb na pridavani sily
 	- pri strileni (zkusit hlavne na tanku, udelat zpetny raz)
+- vic raket!!!
+- zvuky hrajou za kazdou jednotku zvlast - mozna by bylo lepsi prehravat vzdy jeden jeden za jednotku (ne 5 aut a 10 vojaku s vlastnim zkuvem...) - na to by bylo ASI potreba nastrkat nove jednotky stejneho typu do pole... POPREMYSLET
