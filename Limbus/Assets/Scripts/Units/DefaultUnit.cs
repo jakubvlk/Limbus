@@ -9,7 +9,7 @@ public class DefaultUnit : MonoBehaviour {
 	protected float currHealth;
 	
 	// Use this for initialization
-	virtual protected void Start ()
+	protected virtual void Start ()
 	{
 		myTransform = transform;
 		currHealth = maxHealth;

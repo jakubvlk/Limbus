@@ -1,12 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
-public class Base : MonoBehaviour {
+public class Base : DefaultUnit {
 	
 	private GameMaster gameMaster;
 	
 	// Use this for initialization
-	void Start ()
+	protected override void Start ()
 	{
 		gameMaster = GameObject.FindObjectOfType(typeof(GameMaster)) as GameMaster;
 	}

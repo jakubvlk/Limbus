@@ -4,16 +4,18 @@ using System;
 
 public class EnemyUnit : ExtendedUnit {
 	
-	// TODO: 1) pridat zvuk pohybu tanku - pravdepodobne je treba pridat vic audiosourcu... pak ale vsude O.o popremyslet a vygooglit!!!
-	// najit lepsi zvuk pohybu tanku 2) udelat fire rate za minutu (specialne na tank je to duuulezite)
+	// TODO: 
+	// udelat fire rate za minutu (specialne na tank je to duuulezite)
 	
 	public float speed, turnSpeed = 3f;
 	public int reward;
 	public AudioClip movingSound;
-
+	
 	protected PathManager pathManager;
 	
 	private GameMaster gameMaster;
+	// AS = AudioSource
+	private AudioSource movingAS;
 	
 	#region Getters & Setters
 	
@@ -46,24 +48,23 @@ public class EnemyUnit : ExtendedUnit {
 			
 			default:
 				throw new NotImplementedException();
-				break;
 		}
 	}
 	
 	// Use this for initialization
-	virtual protected void Start ()
+	protected override void Start ()
 	{
 		base.Start();
 		
 		myTransform.LookAt(pathManager.CurrentWaypoint.position);
 		gameMaster = GameObject.FindObjectOfType(typeof(GameMaster)) as GameMaster;
+
+		movingAS.Play();
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	protected override void Update ()
 	{
-		
-		// TODO: proc se hybe smerem ke kulometu???
 		base.Update();
 		Move();
 	}
@@ -103,5 +104,14 @@ public class EnemyUnit : ExtendedUnit {
 	{
 		base.Destroy();
 		AddScoreAndMoney();
+	}
+
+	protected override void InitSound ()
+	{
+		base.InitSound();
+		// init of sounds
+		movingAS = gameObject.AddComponent<AudioSource>();
+		movingAS.clip = movingSound;
+		movingAS.minDistance = 100;
 	}
 }

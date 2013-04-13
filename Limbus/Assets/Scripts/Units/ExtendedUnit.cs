@@ -7,16 +7,24 @@ public class ExtendedUnit : DefaultUnit {
 	public float turretRotationSpeed;
 	public float power;
 	public GameObject explosion;
+	public AudioClip fireSound, turretRotationSound;
+	public int fireRatePerMin;
 	
 	// TODO: dat pak na protected
 	public Transform myTarget;	
 	protected Quaternion desiredRotation;
 	
+	private AudioSource fireAS, turretRotationAS;
+	private float firePause, fireTimer;
+	
 	// Use this for initialization
-	virtual protected void Start ()
+	protected override void Start ()
 	{
 		base.Start();
+		InitSound();
 		
+		firePause = 0;
+		fireTimer = Time.time;
 	}
 	
 	protected virtual void Update()
@@ -25,10 +33,13 @@ public class ExtendedUnit : DefaultUnit {
 		{
 			CalculateAimPosition(myTarget.position - turret.position);
 			turret.rotation = Quaternion.Lerp(turret.rotation, desiredRotation, Time.deltaTime * turretRotationSpeed);
-					
-			print(myTransform.rotation);
 			
-			Fire();
+			// Play turret rotation sound
+			if (!turretRotationAS.isPlaying)
+				turretRotationAS.Play();
+			
+			if (Time.time >= fireTimer + firePause)
+				Fire();
 		}
 	}
 	
@@ -45,14 +56,25 @@ public class ExtendedUnit : DefaultUnit {
 		if (other.transform == myTarget)
 		{
 			myTarget = null;
-			audio.Pause();
+			
+			// Stop sounds
+			turretRotationAS.Stop();
 		}
 	}
 
 	private void Fire ()
 	{
-		if (!audio.isPlaying)
-			audio.Play();
+		// Play fire sound
+		if (!fireAS.isPlaying)
+			fireAS.Play();
+		
+		// Set timer and fire pause
+		fireTimer = Time.time;
+		if (fireRatePerMin <= 0)
+			fireRatePerMin = 1;
+		firePause = 60f / fireRatePerMin;
+		
+		// Get a hit
 		myTarget.GetComponent<ExtendedUnit>().GetHit(power);
 	}
 	
@@ -76,5 +98,20 @@ public class ExtendedUnit : DefaultUnit {
 	{
 		Instantiate(explosion, myTransform.position, Quaternion.identity);
 		Destroy(gameObject);
+	}
+	
+	protected virtual void InitSound ()
+	{
+		// Sound of fire
+		fireAS = gameObject.AddComponent<AudioSource>();
+		fireAS.clip = fireSound;
+		fireAS.minDistance = 100;
+		fireAS.playOnAwake = false;
+		
+		// Sound of turret rotation
+		turretRotationAS = gameObject.AddComponent<AudioSource>();
+		turretRotationAS.clip = turretRotationSound;
+		turretRotationAS.minDistance = 20;
+		turretRotationAS.playOnAwake = false;
 	}
 }
