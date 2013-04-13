@@ -6,7 +6,7 @@
 	<wave>
 		<name>Wave 2</name>
 		<unit>
-			<unitIndex>2</unitIndex>
+			<unitIndex>1</unitIndex>
 			<name>Light Armored Vehicle</name>
 			<count>1</count>
 			<respawnIn>1.5</respawnIn>

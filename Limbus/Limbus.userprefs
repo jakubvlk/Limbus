@@ -1,16 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Units\Enemy Units\EnemyUnit.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\XMLs\level1_waves.xml">
     <Files>
-      <File FileName="Assets\Scripts\Units\ExtendedUnit.cs" Line="9" Column="30" />
-      <File FileName="Assets\Scripts\Units\Enemy Units\EnemyUnit.cs" Line="8" Column="2" />
-      <File FileName="Assets\Scripts\Units\Allies Units\Satellite.cs" Line="4" Column="31" />
+      <File FileName="Assets\XMLs\level1_waves.xml" Line="9" Column="16" />
+      <File FileName="Assets\Scripts\Units\ExtendedUnit.cs" Line="105" Column="15" />
+      <File FileName="Assets\Scripts\Units\Enemy Units\EnemyUnit.cs" Line="10" Column="2" />
+      <File FileName="Assets\Scripts\Units\Allies Units\Satellite.cs" Line="7" Column="22" />
       <File FileName="Assets\Scripts\Units\Allies Units\Tower.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameMaster.cs" Line="40" Column="8" />
-      <File FileName="Assets\Scripts\LoadWaves.cs" Line="1" Column="1" />
-      <File FileName="Assets\XMLs\level1_waves.xml" Line="1" Column="1" />
       <File FileName="Assets\Scripts\PathManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Units\Base.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Units\Base\HelicopterTrigger.cs" Line="4" Column="40" />
+      <File FileName="Assets\Scripts\Units\Base\Base.cs" Line="6" Column="11" />
+      <File FileName="Assets\Scripts\Units\DefaultUnit.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

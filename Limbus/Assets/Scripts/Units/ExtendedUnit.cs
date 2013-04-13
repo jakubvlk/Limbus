@@ -31,12 +31,15 @@ public class ExtendedUnit : DefaultUnit {
 	{
 		if (myTarget)
 		{
-			CalculateAimPosition(myTarget.position - turret.position);
-			turret.rotation = Quaternion.Lerp(turret.rotation, desiredRotation, Time.deltaTime * turretRotationSpeed);
-			
-			// Play turret rotation sound
-			if (!turretRotationAS.isPlaying)
-				turretRotationAS.Play();
+			if (turret)
+			{
+				CalculateAimPosition(myTarget.position - turret.position);
+				turret.rotation = Quaternion.Lerp(turret.rotation, desiredRotation, Time.deltaTime * turretRotationSpeed);
+				
+				// Play turret rotation sound
+				if (!turretRotationAS.isPlaying)
+					turretRotationAS.Play();
+			}
 			
 			if (Time.time >= fireTimer + firePause)
 				Fire();
@@ -58,6 +61,8 @@ public class ExtendedUnit : DefaultUnit {
 			myTarget = null;
 			
 			// Stop sounds
+			// TODO: asi pro nektere jednotky jo a pro nektere ne (delo musi doznit v dalce, vojaci musi prestat strilet)
+			//fireAS.Stop();
 			turretRotationAS.Stop();
 		}
 	}

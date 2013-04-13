@@ -1,0 +1,7 @@
+TODO:
+- sehnat vic zvuku otaceni vezicky
+- opravit otaceni satelitu
+- zvuk strileni pridelat na raketu?
+- prebijeni?
+- zkusit predelat pohyb na pridavani sily
+	- pri strileni (zkusit hlavne na tanku, udelat zpetny raz)

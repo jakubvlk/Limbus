@@ -128,7 +128,8 @@
      <Compile Include="Assets\Scripts\PathManager.cs" />
      <Compile Include="Assets\Scripts\Units\Allies Units\Satellite.cs" />
      <Compile Include="Assets\Scripts\Units\Allies Units\Tower.cs" />
-     <Compile Include="Assets\Scripts\Units\Base.cs" />
+     <Compile Include="Assets\Scripts\Units\Base\Base.cs" />
+     <Compile Include="Assets\Scripts\Units\Base\HelicopterTrigger.cs" />
      <Compile Include="Assets\Scripts\Units\DefaultUnit.cs" />
      <Compile Include="Assets\Scripts\Units\Enemy Units\EnemyUnit.cs" />
      <Compile Include="Assets\Scripts\Units\ExtendedUnit.cs" />

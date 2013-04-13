@@ -2,11 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class EnemyUnit : ExtendedUnit {
-	
-	// TODO: 
-	// udelat fire rate za minutu (specialne na tank je to duuulezite)
-	
+public class EnemyUnit : ExtendedUnit
+{	
 	public float speed, turnSpeed = 3f;
 	public int reward;
 	public AudioClip movingSound;
@@ -58,7 +55,8 @@ public class EnemyUnit : ExtendedUnit {
 		
 		myTransform.LookAt(pathManager.CurrentWaypoint.position);
 		gameMaster = GameObject.FindObjectOfType(typeof(GameMaster)) as GameMaster;
-
+		
+		// Play moving units sound
 		movingAS.Play();
 	}
 	
@@ -109,9 +107,11 @@ public class EnemyUnit : ExtendedUnit {
 	protected override void InitSound ()
 	{
 		base.InitSound();
-		// init of sounds
+		
+		// Sound of moving of units
 		movingAS = gameObject.AddComponent<AudioSource>();
 		movingAS.clip = movingSound;
 		movingAS.minDistance = 100;
+		movingAS.loop = true;
 	}
 }
