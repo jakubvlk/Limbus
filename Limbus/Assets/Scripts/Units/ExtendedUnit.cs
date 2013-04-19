@@ -5,7 +5,7 @@ public class ExtendedUnit : DefaultUnit {
 	
 	public Transform turret;
 	public float turretRotationSpeed;
-	public float power;
+	//public float power;
 	public GameObject explosion;
 	public AudioClip fireSound, turretRotationSound;
 	public int fireRatePerMin;
@@ -59,9 +59,8 @@ public class ExtendedUnit : DefaultUnit {
 			}
 			
 			// If timer is OK and the target is infront of us!
-			if (Time.time >= fireTimer + firePause && direction > 0.95f)
+			if (Time.time >= fireTimer + firePause && direction > 0.9f)
 			{
-				print(direction);
 				Fire();
 			}
 		}
@@ -111,7 +110,7 @@ public class ExtendedUnit : DefaultUnit {
 		}
 		
 		// Get a hit
-		myTarget.GetComponent<ExtendedUnit>().GetHit(power);
+		//myTarget.GetComponent<ExtendedUnit>().GetHit(power);
 	}
 	
 	protected void CalculateAimPosition(Vector3 targetPos)
