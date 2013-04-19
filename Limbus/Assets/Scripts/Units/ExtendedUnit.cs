@@ -44,6 +44,7 @@ public class ExtendedUnit : DefaultUnit {
 			}
 			
 			float direction;			
+			// Restriction of fire angle
 			// TMP - so far, not all of units have turrets!
 			// TODO: fix it :-)
 			if (turret)
@@ -58,8 +59,11 @@ public class ExtendedUnit : DefaultUnit {
 			}
 			
 			// If timer is OK and the target is infront of us!
-			if (Time.time >= fireTimer + firePause && direction > 0)
+			if (Time.time >= fireTimer + firePause && direction > 0.95f)
+			{
+				print(direction);
 				Fire();
+			}
 		}
 		
 		
