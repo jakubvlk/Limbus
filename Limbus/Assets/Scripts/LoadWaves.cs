@@ -8,17 +8,6 @@ public class LoadWaves : MonoBehaviour {
 	public int NumOfWaves {	get; private set; }
 	
 	public Wave[] Wave { get; set; }
-	
-	// Use this for initialization
-	void Start ()
-	{		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	
-	}
 
 	public void LoadAllWaves ()
 	{

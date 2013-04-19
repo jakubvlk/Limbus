@@ -10,9 +10,10 @@ public class EnemyUnit : ExtendedUnit
 	
 	protected PathManager pathManager;
 	
-	private GameMaster gameMaster;
+	
 	// AS = AudioSource
 	private AudioSource movingAS;
+	private GameMaster gameMaster;
 	
 	#region Getters & Setters
 	
@@ -102,6 +103,7 @@ public class EnemyUnit : ExtendedUnit
 	{
 		base.Destroy();
 		AddScoreAndMoney();
+		gameMaster.NumOfActiveUnits--;
 	}
 
 	protected override void InitSound ()

@@ -44,7 +44,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Projectile_Missile.js" />
      <Compile Include="Assets\_Models\Units\Enemy Units\Tank\Demo Scene\AutoDestroy.js" />
      <Compile Include="Assets\_Models\Units\Enemy Units\Tank\Demo Scene\Ball.js" />
      <Compile Include="Assets\_Models\Units\Enemy Units\Tank\Demo Scene\MoveGun.js" />

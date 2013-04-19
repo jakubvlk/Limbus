@@ -6,12 +6,12 @@
 	<wave>
 		<name>Wave 1</name>
 		<unit>
-			<unitIndex>0</unitIndex>
+			<unitIndex>2</unitIndex>
 			<name>Tank</name>
-			<count>3</count>
+			<count>1</count>
 			<respawnIn>5</respawnIn>
 		</unit>
-		<pauseAfter>3</pauseAfter>
+		<pauseAfter>5</pauseAfter>
 	</wave>
 	
 	<wave>
@@ -19,10 +19,10 @@
 		<unit>
 			<unitIndex>4</unitIndex>
 			<name>Boat</name>
-			<count>5</count>
+			<count>1</count>
 			<respawnIn>3</respawnIn>
 		</unit>
-		<pauseAfter>0</pauseAfter>
+		<pauseAfter>5</pauseAfter>
 	</wave>
 	
 	<wave>

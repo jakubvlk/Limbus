@@ -14,10 +14,13 @@ public class GameMaster : MonoBehaviour
 	public UILabel waveText, scoreText, lifesText, moneyText;
 	
 	// Privates
-	private float respawnTimer, waveRespawnTimer;
+	private float respawnTimer;	// timer after each unit
+	private float waveRespawnTimer; // timer after end of wave
 	private int numOfWaves;
 	private Wave[] wave;
 	private LoadWaves loadWaves;
+	
+	public int NumOfActiveUnits { get; set; }
 	
 	// Use this for initialization
 	void Start ()
@@ -27,6 +30,7 @@ public class GameMaster : MonoBehaviour
 		loadWaves = GameObject.FindObjectOfType(typeof(LoadWaves)) as LoadWaves;
 		loadWaves.LoadAllWaves();
 		wave = loadWaves.Wave;
+		NumOfActiveUnits = wave[0].Unit.Count;
 		
 		UpdateGUI();
 	}	
@@ -47,7 +51,7 @@ public class GameMaster : MonoBehaviour
 	
 	void Respawn ()
 	{
-		// If it isn't last wave ...
+		// If there is any other wave
 		if (numOfWaves < loadWaves.NumOfWaves)
 		{
 			if (wave[numOfWaves].Unit.Count > 0 && Time.time >= respawnTimer + wave[numOfWaves].Unit.RespawnIn)
@@ -64,16 +68,30 @@ public class GameMaster : MonoBehaviour
 			}
 			
 			// If one wave ended...
-			if (wave[numOfWaves].Unit.Count == 0)
+			if (EndOfWave())
 			{
-				//waveRespawnTimer = Time.time + wave[numOfWaves].PauseAfer;
-				
-				if (Time.time > respawnTimer + wave[numOfWaves].PauseAfer)
+				// If timer is OK...
+				if (Time.time > waveRespawnTimer + wave[numOfWaves].PauseAfer)
 				{
 					numOfWaves++;
+					NumOfActiveUnits = wave[numOfWaves].Unit.Count;
 					UpdateGUI();
 				}
 			}
+			else
+			{
+				waveRespawnTimer = Time.time;
+			}
 		}
+	}
+	
+	private bool EndOfWave()
+	{
+		if (NumOfActiveUnits == 0)
+		{
+			return true;
+		}
+		
+		return false;
 	}
 }

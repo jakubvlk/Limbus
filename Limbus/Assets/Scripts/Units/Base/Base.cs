@@ -15,6 +15,7 @@ public class Base : DefaultUnit {
 	{
 		if (other.tag == "GroundEnemy" || other.tag == "WaterEnemy")
 		{
+			gameMaster.NumOfActiveUnits--;
         	Destroy(other.gameObject);
 			gameMaster.lifes--;
 			gameMaster.UpdateGUI();
