@@ -110,6 +110,12 @@ public class InGameGUI : MonoBehaviour
 			case "btn_GrenadeLauncher":
 				structureIndex = 2;
 				break;
+			case "btn_Pause":
+				DoPauseToggle();
+				break;
+			case "btn_DoubleSpeed":
+				DoubleTime();
+				break;
 		}	
 		
 		SetActivePlacementPlanes(true);		
@@ -149,10 +155,33 @@ public class InGameGUI : MonoBehaviour
 		{
 			
 			SetActivePlacementPlanes(true);
-			
-			
-			
-			
+		}
+	}
+	
+	// TODO: pause of the sound isn't the best... http://answers.unity3d.com/questions/7544/how-do-i-pause-my-game.html
+	private void DoPauseToggle()
+	{
+		if(Time.timeScale > 0)
+		{
+        	Time.timeScale = 0;
+			AudioListener.pause = true;
+		}
+		else
+		{
+			Time.timeScale = 1;
+			AudioListener.pause = false;
+		}
+	}
+	
+	private void DoubleTime()
+	{
+    	if(Time.timeScale == 1)
+		{
+        	Time.timeScale = 2;
+		}
+		else
+		{
+			Time.timeScale = 1;
 		}
 	}
 }
