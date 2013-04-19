@@ -1,9 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\XMLs\level1_waves.xml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Missile.cs">
     <Files>
       <File FileName="Assets\Scripts\Missile.cs" Line="41" Column="26" />
-      <File FileName="Assets\XMLs\level1_waves.xml" Line="9" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

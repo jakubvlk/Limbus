@@ -6,7 +6,7 @@
 	<wave>
 		<name>Wave 1</name>
 		<unit>
-			<unitIndex>2</unitIndex>
+			<unitIndex>3</unitIndex>
 			<name>Tank</name>
 			<count>3</count>
 			<respawnIn>5</respawnIn>

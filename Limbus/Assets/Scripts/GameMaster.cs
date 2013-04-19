@@ -41,7 +41,7 @@ public class GameMaster : MonoBehaviour
 	{
 		waveText.text = @"Wave: " + (numOfWaves + 1);
 		scoreText.text = @"Score: " + score;
-		moneyText.text = @"Money: " + money;
+		moneyText.text = @"Money: " + money + @" $";
 		lifesText.text = @"Lifes: " + lifes;
 	}
 	
