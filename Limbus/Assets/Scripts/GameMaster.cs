@@ -10,8 +10,10 @@ public class GameMaster : MonoBehaviour
 	// Privates
 	private float respawnTimer;	// timer after each unit
 	private float waveRespawnTimer; // timer after end of wave
-	//private int numOfWaves;
-	private int lifes, money, score;
+	
+	[SerializeField] 	// show in Editor - BUT when set from editor, setter is NOT called
+	private int lifes = 5, money = 1000, score = 0;
+	
 	private Wave[] wave;
 	private LoadWaves loadWaves;
 	private InGameGUI inGameGUI;
@@ -76,9 +78,6 @@ public class GameMaster : MonoBehaviour
 		
 		inGameGUI = GameObject.FindObjectOfType(typeof(InGameGUI)) as InGameGUI;
 		NumOfWaves = 0;
-		Lifes = 5;
-		Money = 1000;
-		Score = 0;
 		
 		loadWaves = GameObject.FindObjectOfType(typeof(LoadWaves)) as LoadWaves;
 		loadWaves.LoadAllWaves();

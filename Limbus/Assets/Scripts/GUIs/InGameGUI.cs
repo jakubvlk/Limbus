@@ -19,12 +19,20 @@ public class InGameGUI : MonoBehaviour
 	private Material originalMat;
 	private GameObject lastHitObj;
 	
+	private GameObject[] towersPool;
+	
 	private int structureIndex;
 	
 	private GameMaster gameMaster;
 	
 	private GUIMode guiMode;
 	
+	
+	private enum GUIMode 
+	{
+		GUIMode_Paused,
+		GUIMode_Running
+	}
 	
 	
 	// Use this for initialization
@@ -34,6 +42,7 @@ public class InGameGUI : MonoBehaviour
 		structureIndex = -1;
 		gameMaster = GameObject.FindObjectOfType(typeof(GameMaster)) as GameMaster;
 		UpdateGUI();
+		towersPool = MakeTowersPool();
 		guiMode = GUIMode.GUIMode_Running;
 	}
 	
@@ -173,7 +182,9 @@ public class InGameGUI : MonoBehaviour
 		{			
 			if (lastHitObj.tag == "PlacementPlane_Open")
 			{
-				GameObject newStructure = (GameObject)Instantiate(allStructures[structureIndex], lastHitObj.transform.position, Quaternion.identity);
+				GameObject newStructure = towersPool[structureIndex];
+				newStructure.transform.position = lastHitObj.transform.position;
+					//(GameObject)Instantiate(allStructures[structureIndex], lastHitObj.transform.position, Quaternion.identity);
 				lastHitObj.tag = "PlacementPlane_Closed";
 				
 				gameMaster.Money -= allStructures[structureIndex].GetComponent<Tower>().price;
@@ -228,12 +239,18 @@ public class InGameGUI : MonoBehaviour
 		{
 			Time.timeScale = 1;
 		}
-	}
-	
-	private enum GUIMode 
+	}	
+		
+	private GameObject[] MakeTowersPool()
 	{
-		GUIMode_Paused,
-		GUIMode_Running
+		GameObject[] towersPool = new GameObject[allStructures.Length];
+		
+		for (int i = 0; i < towersPool.Length; i++)
+		{
+			towersPool[i] = (GameObject)Instantiate(allStructures[i], Vector3.zero, Quaternion.identity);
+		}
+		
+		return towersPool;
 	}
 }
 

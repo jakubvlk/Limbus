@@ -12,8 +12,7 @@ public class ExtendedUnit : DefaultUnit {
 	public GameObject projectile;
 	public Transform[] muzzleTransform;
 	
-	// TODO: dat pak na protected
-	public Transform myTarget;	
+	protected Transform myTarget;	
 	protected Quaternion desiredRotation;
 	
 	private AudioSource fireAS, turretRotationAS;
