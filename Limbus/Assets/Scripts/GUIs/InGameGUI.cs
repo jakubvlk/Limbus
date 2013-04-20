@@ -133,7 +133,7 @@ public class InGameGUI : MonoBehaviour
 					print("*************Game Saved!!!*********");
 					break;
 				case "btn_Quit":
-					print("*************Quit to main menu!!!*********");
+					Application.LoadLevel(0);
 					break;
 			}
 		}

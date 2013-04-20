@@ -25,6 +25,7 @@ public class GameMaster : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{		
+		Time.timeScale = 1f;
 		respawnTimer = waveRespawnTimer = Time.time;
 		numOfWaves = 0;
 		loadWaves = GameObject.FindObjectOfType(typeof(LoadWaves)) as LoadWaves;
