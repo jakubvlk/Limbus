@@ -11,8 +11,7 @@ public class InGameGUI : MonoBehaviour
 	public GameObject[] allStructures;
 	public UISlicedSprite[] buildBtnGraphics;
 	
-	public GameObject pauseMenu;
-	
+	public GameObject pauseMenu;	
 	
 	// Private
 	private Material originalMat;
@@ -104,12 +103,15 @@ public class InGameGUI : MonoBehaviour
 			{
 				case "btn_MachineGun":
 					structureIndex = 0;
+					SetActivePlacementPlanes(true);	
 					break;
 				case "btn_Anti-aircraft_Satellite":
 					structureIndex = 1;
+					SetActivePlacementPlanes(true);	
 					break;
 				case "btn_GrenadeLauncher":
 					structureIndex = 2;
+					SetActivePlacementPlanes(true);	
 					break;
 				case "btn_Pause":
 					DoPauseToggle();
@@ -117,10 +119,8 @@ public class InGameGUI : MonoBehaviour
 				case "btn_DoubleSpeed":
 					DoubleTime();
 					break;
-				
-				SetActivePlacementPlanes(true);		
-				UpdateGUI();
-			}	
+			}		
+			
 		}
 		else if (guiMode == GUIMode.GUIMode_Paused)
 		{
@@ -156,6 +156,7 @@ public class InGameGUI : MonoBehaviour
 	private void SetActivePlacementPlanes(bool val)
 	{
 		placementPlanesRoot.gameObject.SetActive(val);
+		UpdateGUI();
 	}
 
 	void BuyAndBuild ()
@@ -188,8 +189,6 @@ public class InGameGUI : MonoBehaviour
 		}
 		
 		SetActivePlacementPlanes(false);
-		
-		UpdateGUI();
 	}
 	
 	// TODO: pause of the sound isn't the best... http://answers.unity3d.com/questions/7544/how-do-i-pause-my-game.html
