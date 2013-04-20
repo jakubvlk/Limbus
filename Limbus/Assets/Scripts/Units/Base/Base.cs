@@ -17,11 +17,10 @@ public class Base : DefaultUnit {
 		{
 			gameMaster.NumOfActiveUnits--;
         	Destroy(other.gameObject);
-			gameMaster.lifes--;
-			gameMaster.UpdateGUI();
+			gameMaster.Lifes--;
 		}
 		
-		if (gameMaster.lifes <= 0)
+		if (gameMaster.Lifes <= 0)
 		{
 			print(@"********GAME OVER************");
 		}

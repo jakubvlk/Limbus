@@ -8,7 +8,7 @@
 		<unit>
 			<unitIndex>2</unitIndex>
 			<name>Tank</name>
-			<count>1</count>
+			<count>2</count>
 			<respawnIn>5</respawnIn>
 		</unit>
 		<pauseAfter>5</pauseAfter>

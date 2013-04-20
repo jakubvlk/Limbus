@@ -13,6 +13,8 @@ public class InGameGUI : MonoBehaviour
 	
 	public GameObject pauseMenu;	
 	
+	public UILabel waveText, scoreText, lifesText, moneyText;
+	
 	// Private
 	private Material originalMat;
 	private GameObject lastHitObj;
@@ -139,7 +141,7 @@ public class InGameGUI : MonoBehaviour
 		}
 	}
 	
-	private void UpdateGUI()
+	public void UpdateGUI()
 	{
 		foreach (UISlicedSprite theBtnGraphic in buildBtnGraphics)
 		{
@@ -151,6 +153,11 @@ public class InGameGUI : MonoBehaviour
 		{
 			buildBtnGraphics[structureIndex].color = onColor;
 		}
+		
+		waveText.text = @"Wave: " + (gameMaster.NumOfWaves + 1);
+		scoreText.text = @"Score: " + gameMaster.Score;
+		moneyText.text = @"Money: " + gameMaster.Money + @"$";
+		lifesText.text = @"Lifes: " + gameMaster.Lifes;
 	}
 	
 	private void SetActivePlacementPlanes(bool val)
@@ -162,15 +169,15 @@ public class InGameGUI : MonoBehaviour
 	void BuyAndBuild ()
 	{
 		// enough money?..
-		if (gameMaster.money >= allStructures[structureIndex].GetComponent<Tower>().price)
+		if (gameMaster.Money >= allStructures[structureIndex].GetComponent<Tower>().price)
 		{			
 			if (lastHitObj.tag == "PlacementPlane_Open")
 			{
 				GameObject newStructure = (GameObject)Instantiate(allStructures[structureIndex], lastHitObj.transform.position, Quaternion.identity);
 				lastHitObj.tag = "PlacementPlane_Closed";
 				
-				gameMaster.money -= allStructures[structureIndex].GetComponent<Tower>().price;
-				gameMaster.UpdateGUI();
+				gameMaster.Money -= allStructures[structureIndex].GetComponent<Tower>().price;
+				UpdateGUI();
 			}
 		}
 		else

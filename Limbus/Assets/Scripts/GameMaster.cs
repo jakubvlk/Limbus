@@ -3,37 +3,89 @@ using System.Collections;
 
 public class GameMaster : MonoBehaviour
 {	
-	public int lifes = 5;
-	public int money = 1000;
-	public int score = 0;
 	public int levelNumber;
 	public Transform groundRespawn, airRespawn, waterRespawn;
 	public GameObject[] allUnits;
 	
-	// GUI
-	public UILabel waveText, scoreText, lifesText, moneyText;
-	
 	// Privates
 	private float respawnTimer;	// timer after each unit
 	private float waveRespawnTimer; // timer after end of wave
-	private int numOfWaves;
+	//private int numOfWaves;
+	private int lifes, money, score;
 	private Wave[] wave;
 	private LoadWaves loadWaves;
+	private InGameGUI inGameGUI;
 	
 	public int NumOfActiveUnits { get; set; }
+	
+	public int NumOfWaves {
+		get;
+		private set;
+	}
+	
+	#region Getters & Setters
+	
+	public int Lifes {
+		get
+		{
+			return lifes;
+		}
+		
+		set
+		{ 
+			lifes = value;
+			inGameGUI.UpdateGUI();
+		}
+	}
+	
+	public int Money {
+		get
+		{
+			return money;
+		}
+		
+		set
+		{ 
+			money = value;
+			inGameGUI.UpdateGUI();
+		}
+	}
+	
+	public int Score {
+		get
+		{
+			return score;
+		}
+		
+		set
+		{ 
+			score = value;
+			inGameGUI.UpdateGUI();
+		}
+	}
+	
+	
+	
+	#endregion
 	
 	// Use this for initialization
 	void Start ()
 	{		
 		Time.timeScale = 1f;
 		respawnTimer = waveRespawnTimer = Time.time;
-		numOfWaves = 0;
+		
+		inGameGUI = GameObject.FindObjectOfType(typeof(InGameGUI)) as InGameGUI;
+		NumOfWaves = 0;
+		Lifes = 5;
+		Money = 1000;
+		Score = 0;
+		
 		loadWaves = GameObject.FindObjectOfType(typeof(LoadWaves)) as LoadWaves;
 		loadWaves.LoadAllWaves();
 		wave = loadWaves.Wave;
 		NumOfActiveUnits = wave[0].Unit.Count;
 		
-		UpdateGUI();
+		//UpdateGUI();
 	}	
 	
 	// Update is called once per frame
@@ -42,41 +94,33 @@ public class GameMaster : MonoBehaviour
 		Respawn ();
 	}
 	
-	public void UpdateGUI()
-	{
-		waveText.text = @"Wave: " + (numOfWaves + 1);
-		scoreText.text = @"Score: " + score;
-		moneyText.text = @"Money: " + money + @" $";
-		lifesText.text = @"Lifes: " + lifes;
-	}
-	
 	void Respawn ()
 	{
 		// If there is any other wave
-		if (numOfWaves < loadWaves.NumOfWaves)
+		if (NumOfWaves < loadWaves.NumOfWaves)
 		{
-			if (wave[numOfWaves].Unit.Count > 0 && Time.time >= respawnTimer + wave[numOfWaves].Unit.RespawnIn)
+			if (wave[NumOfWaves].Unit.Count > 0 && Time.time >= respawnTimer + wave[NumOfWaves].Unit.RespawnIn)
 			{
-				GameObject newUnit = (GameObject) Instantiate((GameObject)allUnits[wave[numOfWaves].Unit.UnitIndex], Vector3.zero, Quaternion.identity);
+				GameObject newUnit = (GameObject) Instantiate((GameObject)allUnits[wave[NumOfWaves].Unit.UnitIndex], Vector3.zero, Quaternion.identity);
 				newUnit.transform.position = newUnit.GetComponent<EnemyUnit>().RespawnPoint;
 				
 				respawnTimer = Time.time;
 				
 				// decrement num of unit to go
-				Unit tmp = wave[numOfWaves].Unit;
+				Unit tmp = wave[NumOfWaves].Unit;
 				tmp.Count--;
-				wave[numOfWaves].Unit = tmp;
+				wave[NumOfWaves].Unit = tmp;
 			}
 			
 			// If one wave ended...
 			if (EndOfWave())
 			{
 				// If timer is OK...
-				if (Time.time > waveRespawnTimer + wave[numOfWaves].PauseAfer)
+				if (Time.time > waveRespawnTimer + wave[NumOfWaves].PauseAfer)
 				{
-					numOfWaves++;
-					NumOfActiveUnits = wave[numOfWaves].Unit.Count;
-					UpdateGUI();
+					NumOfWaves++;
+					NumOfActiveUnits = wave[NumOfWaves].Unit.Count;
+					//UpdateGUI();
 				}
 			}
 			else

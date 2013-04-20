@@ -95,8 +95,7 @@ public class EnemyUnit : ExtendedUnit
 		// TODO: jak pocitat skore???
 		//gameMaster.score += ;
 		
-		gameMaster.money += reward;
-		gameMaster.UpdateGUI();
+		gameMaster.Money += reward;
 	}
 	
 	protected override void Destroy()
