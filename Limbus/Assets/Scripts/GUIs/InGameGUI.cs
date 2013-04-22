@@ -203,7 +203,7 @@ public class InGameGUI : MonoBehaviour
 			switch (btnObj.name)
 			{
 				case "btn_Upgrade":
-					print("UPGRADED!!!!");
+					selectedTower.GetComponent<Tower>().Promote();
 					break;
 				case "btn_Delete":
 					Destroy(selectedTower);

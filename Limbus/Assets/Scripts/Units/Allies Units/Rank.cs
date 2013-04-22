@@ -18,8 +18,8 @@ public class Rank : MonoBehaviour
 	}
 
 	public void Promote()
-	{
-		enabled = true;
+	{		
+		renderer.enabled = true;
 		
 		RankValue++;
 		
@@ -30,6 +30,6 @@ public class Rank : MonoBehaviour
 
 	private void ChangeTexture ()
 	{
-		renderer.material.SetTexture("Rank3", rank3Texture);
+		renderer.material.mainTexture = rank3Texture;
 	}
 }

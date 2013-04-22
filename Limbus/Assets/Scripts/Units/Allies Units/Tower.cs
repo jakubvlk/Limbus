@@ -10,8 +10,16 @@ public class Tower : ExtendedUnit
 		
 	private Rank rank;
 	
-	private void Promote()
+	protected override void Start()
 	{
-		rank.Promote();
+		base.Start();
+		rank = gameObject.GetComponentInChildren<Rank>();
+	}
+	
+	public void Promote()
+	{
+		
+		if (rank.RankValue < 2)
+			rank.Promote();
 	}
 }
