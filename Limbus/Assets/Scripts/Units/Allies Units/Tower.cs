@@ -20,7 +20,7 @@ public class Tower : ExtendedUnit
 		rankModifiers[2] = 1.3f;
 	}
 	
-	public void Promote()
+	public string Promote()
 	{
 		if (rank.RankValue < 2)
 		{
@@ -41,11 +41,17 @@ public class Tower : ExtendedUnit
 				
 				// It has to be like last!!! (coz RankValue + 1)
 				rank.Promote();
+				
+				return string.Empty;
 			}
 			else
 			{
-				print("********* Not enough money to upgrade!!!!***********");
+				return InGameGUI.NOT_ENOUGH_MONEY;
 			}
+		}
+		else
+		{
+			return InGameGUI.UPGRADE_MAX_LVL;
 		}
 	}
 }

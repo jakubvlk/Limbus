@@ -14,7 +14,7 @@ public class InGameGUI : MonoBehaviour
 	
 	public GameObject pauseMenu;	
 	
-	public UILabel waveText, scoreText, lifesText, moneyText;
+	public UILabel waveText, scoreText, lifesText, moneyText, alerText;
 	public GameObject shopMenu, towerMenu;
 	
 	// Private
@@ -31,6 +31,10 @@ public class InGameGUI : MonoBehaviour
 	
 	private GameObject selectedTower;
 	
+	// Constants
+	public const string NOT_ENOUGH_MONEY = @"Not enough money!!!";
+	public const string UPGRADE_MAX_LVL = @"Maximum level of upgrade!!!";
+	public const string OCCUPIED_PLACEMENT = @"This placement is taken!!!";
 	
 	private enum GUIMode 
 	{
@@ -180,11 +184,22 @@ public class InGameGUI : MonoBehaviour
 				gameMaster.Money -= allStructures[structureIndex].GetComponent<Tower>().price;
 				UpdateGUI();
 			}
+			else
+			{
+				StartCoroutine(ShowAlert(OCCUPIED_PLACEMENT, 3));
+			}
 		}
 		else
-		{
-			print(@"**********Not enough money!**********");
+		{			
+			StartCoroutine(ShowAlert(NOT_ENOUGH_MONEY, 3));
 		}
+	}
+	
+	IEnumerator ShowAlert(string allertMessage, float duration)
+	{
+ 		alerText.text = allertMessage;
+		yield return new WaitForSeconds(duration);
+ 		alerText.text = string.Empty;
 	}
 
 	void CancelBuildMode ()
@@ -248,7 +263,9 @@ public class InGameGUI : MonoBehaviour
 			switch (btnObj.name)
 			{
 				case "btn_Upgrade":
-					selectedTower.GetComponent<Tower>().Promote();
+					string respond = selectedTower.GetComponent<Tower>().Promote();
+					if (respond != string.Empty)
+						StartCoroutine(ShowAlert(respond, 3));
 					break;
 				case "btn_Delete":
 					OpenPlacementPlane(selectedTower.transform.position);
