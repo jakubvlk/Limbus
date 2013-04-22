@@ -122,6 +122,7 @@
      <Compile Include="Assets\NGUI\NGUI\Scripts\UI\UITiledSprite.cs" />
      <Compile Include="Assets\NGUI\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\NGUI\Scripts\UI\UIViewport.cs" />
+     <Compile Include="Assets\Scripts\Billboard.cs" />
      <Compile Include="Assets\Scripts\GUIs\ChooseLevelGUI.cs" />
      <Compile Include="Assets\Scripts\GUIs\InGameGUI.cs" />
      <Compile Include="Assets\Scripts\GUIs\MainMenuGUI.cs" />
@@ -129,6 +130,7 @@
      <Compile Include="Assets\Scripts\LoadWaves.cs" />
      <Compile Include="Assets\Scripts\Missile.cs" />
      <Compile Include="Assets\Scripts\PathManager.cs" />
+     <Compile Include="Assets\Scripts\Units\Allies Units\Rank.cs" />
      <Compile Include="Assets\Scripts\Units\Allies Units\Satellite.cs" />
      <Compile Include="Assets\Scripts\Units\Allies Units\Tower.cs" />
      <Compile Include="Assets\Scripts\Units\Base\Base.cs" />

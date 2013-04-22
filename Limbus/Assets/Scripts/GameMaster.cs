@@ -20,7 +20,7 @@ public class GameMaster : MonoBehaviour
 	
 	public int NumOfActiveUnits { get; set; }
 	
-	public int NumOfWaves {
+	public int NumOfWaves { 
 		get;
 		private set;
 	}

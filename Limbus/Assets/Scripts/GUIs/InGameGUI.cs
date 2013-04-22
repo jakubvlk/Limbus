@@ -5,7 +5,8 @@ public class InGameGUI : MonoBehaviour
 {
 	public Transform placementPlanesRoot;
 	public Material hoverMat;
-	public LayerMask placementLayerMask;
+	public LayerMask placementLayerMask, towerLayerMask, nguiLayerMask;
+	public GameObject GUICameraOBJ;
 	
 	public Color onColor, offColor;
 	public GameObject[] allStructures;
@@ -14,6 +15,7 @@ public class InGameGUI : MonoBehaviour
 	public GameObject pauseMenu;	
 	
 	public UILabel waveText, scoreText, lifesText, moneyText;
+	public GameObject shopMenu, towerMenu;
 	
 	// Private
 	private Material originalMat;
@@ -31,7 +33,8 @@ public class InGameGUI : MonoBehaviour
 	private enum GUIMode 
 	{
 		GUIMode_Paused,
-		GUIMode_Running
+		GUIMode_Running,
+		GUIMode_Upgrading,
 	}
 	
 	
@@ -55,9 +58,16 @@ public class InGameGUI : MonoBehaviour
 	
 			// MOUSE
 			// building of tower
-			if (Input.GetMouseButtonDown(0) && lastHitObj)
+			if (Input.GetMouseButtonDown(0) )
 			{
-				BuyAndBuild ();
+				if (lastHitObj)
+				{
+					BuyAndBuild ();
+				}
+				else
+				{
+					SelectTower ();
+				}
 			}
 			// canceling of the building mode
 			else if (Input.GetMouseButtonDown(1))
@@ -74,6 +84,40 @@ public class InGameGUI : MonoBehaviour
 		else if (guiMode == GUIMode.GUIMode_Paused)
 		{
 			
+		}
+		else if (guiMode == GUIMode.GUIMode_Upgrading)
+		{
+			if (Input.GetMouseButtonDown(0) )
+			{
+				DeselectTower();
+				SelectTower();
+				
+			}
+		}
+	}
+
+	void SelectTower ()
+	{
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit;
+		
+		if (Physics.Raycast(ray, out hit, 1000, towerLayerMask))
+		{
+			ToggleUpgrade();
+		}
+	}
+
+	void DeselectTower ()
+	{
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit;
+		
+		// If don't hit a button -> deselect tower
+		ray = GUICameraOBJ.camera.ScreenPointToRay(Input.mousePosition);
+		if (!Physics.Raycast(ray, out hit, 1000, nguiLayerMask))
+		{
+			//print( Vector3.Distance(ray.origin, hit.collider.gameObject.transform.position));
+			ToggleUpgrade();
 		}
 	}
 
@@ -148,6 +192,18 @@ public class InGameGUI : MonoBehaviour
 					break;
 			}
 		}
+		else if (guiMode == GUIMode.GUIMode_Upgrading)
+		{
+			switch (btnObj.name)
+			{
+				case "btn_Upgrade":
+					print("UPGRADED!!!!");
+					break;
+				case "btn_Delete":
+					print("DELETED!!!!");
+					break;
+			}
+		}
 	}
 	
 	public void UpdateGUI()
@@ -182,9 +238,8 @@ public class InGameGUI : MonoBehaviour
 		{			
 			if (lastHitObj.tag == "PlacementPlane_Open")
 			{
-				GameObject newStructure = towersPool[structureIndex];
+				GameObject newStructure = Instantiate(towersPool[structureIndex]) as GameObject;
 				newStructure.transform.position = lastHitObj.transform.position;
-					//(GameObject)Instantiate(allStructures[structureIndex], lastHitObj.transform.position, Quaternion.identity);
 				lastHitObj.tag = "PlacementPlane_Closed";
 				
 				gameMaster.Money -= allStructures[structureIndex].GetComponent<Tower>().price;
@@ -251,6 +306,19 @@ public class InGameGUI : MonoBehaviour
 		}
 		
 		return towersPool;
+	}
+	
+	private void ToggleUpgrade()
+	{
+		// active/deactive tower menu and shop menu
+		towerMenu.SetActive(!towerMenu.activeSelf);
+		shopMenu.SetActive(!shopMenu.activeSelf);
+		
+		// switch to correct GUIMode
+		if (guiMode == GUIMode.GUIMode_Running)
+			guiMode = GUIMode.GUIMode_Upgrading;
+		else if (guiMode == GUIMode.GUIMode_Upgrading)
+			guiMode = GUIMode.GUIMode_Running;
 	}
 }
 
