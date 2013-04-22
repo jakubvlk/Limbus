@@ -10,6 +10,10 @@ public class Tower : ExtendedUnit
 	private Rank rank;
 	private float upgradePrice;
 	
+	public int TowerLevel {
+		get { return rank.RankValue; }
+	}
+	
 	protected override void Start()
 	{
 		base.Start();

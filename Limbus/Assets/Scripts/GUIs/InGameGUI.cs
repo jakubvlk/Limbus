@@ -14,7 +14,7 @@ public class InGameGUI : MonoBehaviour
 	
 	public GameObject pauseMenu;	
 	
-	public UILabel waveText, scoreText, lifesText, moneyText, alerText;
+	public UILabel waveText, scoreText, lifesText, moneyText, messageText;
 	public GameObject shopMenu, towerMenu;
 	
 	// Private
@@ -31,10 +31,16 @@ public class InGameGUI : MonoBehaviour
 	
 	private GameObject selectedTower;
 	
-	// Constants
+	//	Num Constants
+	private const float ALERT_TIME = 3f;
+	private const float MESSAGE_TIME = 2f;
+	
+	//  String constants
 	public const string NOT_ENOUGH_MONEY = @"Not enough money!!!";
 	public const string UPGRADE_MAX_LVL = @"Maximum level of upgrade!!!";
 	public const string OCCUPIED_PLACEMENT = @"This placement is taken!!!";
+	public const string TOWER_UPGRADED = @"Tower upgraded on level ";
+	public const string GAME_SAVED = @"Game saved.";
 	
 	private enum GUIMode 
 	{
@@ -186,20 +192,25 @@ public class InGameGUI : MonoBehaviour
 			}
 			else
 			{
-				StartCoroutine(ShowAlert(OCCUPIED_PLACEMENT, 3));
+				StartCoroutine(ShowMessage(OCCUPIED_PLACEMENT, ALERT_TIME, true));
 			}
 		}
 		else
 		{			
-			StartCoroutine(ShowAlert(NOT_ENOUGH_MONEY, 3));
+			StartCoroutine(ShowMessage(NOT_ENOUGH_MONEY, ALERT_TIME, true));
 		}
 	}
-	
-	IEnumerator ShowAlert(string allertMessage, float duration)
+		// - pridat k save a upgradu
+	IEnumerator ShowMessage(string allertMessage, float duration, bool alert)
 	{
- 		alerText.text = allertMessage;
+		if (alert)
+			messageText.color = Color.red;
+		else
+			messageText.color = Color.blue;
+		
+ 		messageText.text = allertMessage;
 		yield return new WaitForSeconds(duration);
- 		alerText.text = string.Empty;
+ 		messageText.text = string.Empty;
 	}
 
 	void CancelBuildMode ()
@@ -251,7 +262,9 @@ public class InGameGUI : MonoBehaviour
 					DoPauseToggle();
 					break;
 				case "btn_Save":
-					print("*************Game Saved!!!*********");
+					DoPauseToggle();
+					StartCoroutine(ShowMessage(GAME_SAVED, MESSAGE_TIME, false));
+					print("*************Nope, just kidding :P*********");
 					break;
 				case "btn_Quit":
 					Application.LoadLevel(0);
@@ -264,8 +277,14 @@ public class InGameGUI : MonoBehaviour
 			{
 				case "btn_Upgrade":
 					string respond = selectedTower.GetComponent<Tower>().Promote();
-					if (respond != string.Empty)
-						StartCoroutine(ShowAlert(respond, 3));
+					if (respond == string.Empty)
+					{
+						StartCoroutine(ShowMessage(TOWER_UPGRADED + selectedTower.GetComponent<Tower>().TowerLevel + ".", MESSAGE_TIME, false));
+					}
+					else
+					{
+						StartCoroutine(ShowMessage(respond, ALERT_TIME, true));
+					}
 					break;
 				case "btn_Delete":
 					OpenPlacementPlane(selectedTower.transform.position);
