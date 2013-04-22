@@ -29,6 +29,8 @@ public class InGameGUI : MonoBehaviour
 	
 	private GUIMode guiMode;
 	
+	private GameObject selectedTower;
+	
 	
 	private enum GUIMode 
 	{
@@ -47,6 +49,7 @@ public class InGameGUI : MonoBehaviour
 		UpdateGUI();
 		towersPool = MakeTowersPool();
 		guiMode = GUIMode.GUIMode_Running;
+		selectedTower = null;
 	}
 	
 	// Update is called once per frame
@@ -103,6 +106,8 @@ public class InGameGUI : MonoBehaviour
 		
 		if (Physics.Raycast(ray, out hit, 1000, towerLayerMask))
 		{
+			// Select parent object = Tower
+			selectedTower = hit.collider.gameObject.transform.parent.gameObject;
 			ToggleUpgrade();
 		}
 	}
@@ -118,6 +123,7 @@ public class InGameGUI : MonoBehaviour
 		{
 			//print( Vector3.Distance(ray.origin, hit.collider.gameObject.transform.position));
 			ToggleUpgrade();
+			selectedTower = null;
 		}
 	}
 
@@ -200,7 +206,8 @@ public class InGameGUI : MonoBehaviour
 					print("UPGRADED!!!!");
 					break;
 				case "btn_Delete":
-					print("DELETED!!!!");
+					Destroy(selectedTower);
+					ToggleUpgrade();
 					break;
 			}
 		}
