@@ -128,7 +128,7 @@ public class ExtendedUnit : DefaultUnit {
 		}
 	}
 
-	protected virtual void Destroy()
+	public virtual void Destroy()
 	{
 		Instantiate(explosion, myTransform.position, Quaternion.identity);
 		Destroy(gameObject);

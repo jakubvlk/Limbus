@@ -9,7 +9,7 @@
 			<unitIndex>2</unitIndex>
 			<name>Tank</name>
 			<count>2</count>
-			<respawnIn>50</respawnIn>
+			<respawnIn>5</respawnIn>
 		</unit>
 		<pauseAfter>5</pauseAfter>
 	</wave>

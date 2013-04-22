@@ -1,15 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class Base : DefaultUnit {
-	
-	protected GameMaster gameMaster;
-	
-	// Use this for initialization
-	protected override void Start ()
-	{
-		gameMaster = GameObject.FindObjectOfType(typeof(GameMaster)) as GameMaster;
-	}
+public class Base : DefaultUnit 
+{
 	
 	protected virtual void OnTriggerEnter(Collider other)
 	{

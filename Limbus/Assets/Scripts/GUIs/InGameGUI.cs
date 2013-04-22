@@ -126,6 +126,17 @@ public class InGameGUI : MonoBehaviour
 			selectedTower = null;
 		}
 	}
+	
+	private void OpenPlacementPlane(Vector3 towerPosition)
+	{		
+		Ray ray = Camera.main.ScreenPointToRay(towerPosition);
+		RaycastHit hit;
+		
+		if (Physics.Raycast(ray, out hit, 1000, placementLayerMask))
+		{
+			hit.collider.gameObject.tag = "PlacementPlane_Open";
+		}
+	}
 
 	void HighlightPlacements ()
 	{
@@ -152,6 +163,39 @@ public class InGameGUI : MonoBehaviour
 				lastHitObj = null;
 			}
 		}
+	}
+	
+	void BuyAndBuild ()
+	{
+		// enough money?..
+		if (gameMaster.Money >= allStructures[structureIndex].GetComponent<Tower>().price)
+		{			
+			if (lastHitObj.tag == "PlacementPlane_Open")
+			{
+				GameObject newStructure = Instantiate(towersPool[structureIndex]) as GameObject;
+				newStructure.transform.position = lastHitObj.transform.position;
+				lastHitObj.tag = "PlacementPlane_Closed";
+				
+				gameMaster.Money -= allStructures[structureIndex].GetComponent<Tower>().price;
+				UpdateGUI();
+			}
+		}
+		else
+		{
+			print(@"**********Not enough money!**********");
+		}
+	}
+
+	void CancelBuildMode ()
+	{
+		structureIndex = -1;
+		if (lastHitObj)
+		{
+			lastHitObj.renderer.material = originalMat;
+			lastHitObj = null;
+		}
+		
+		SetActivePlacementPlanes(false);
 	}
 	
 	// On button click
@@ -206,7 +250,8 @@ public class InGameGUI : MonoBehaviour
 					selectedTower.GetComponent<Tower>().Promote();
 					break;
 				case "btn_Delete":
-					Destroy(selectedTower);
+					OpenPlacementPlane(selectedTower.transform.position);
+					selectedTower.GetComponent<Tower>().Destroy();
 					ToggleUpgrade();
 					break;
 			}
@@ -236,39 +281,6 @@ public class InGameGUI : MonoBehaviour
 	{
 		placementPlanesRoot.gameObject.SetActive(val);
 		UpdateGUI();
-	}
-
-	void BuyAndBuild ()
-	{
-		// enough money?..
-		if (gameMaster.Money >= allStructures[structureIndex].GetComponent<Tower>().price)
-		{			
-			if (lastHitObj.tag == "PlacementPlane_Open")
-			{
-				GameObject newStructure = Instantiate(towersPool[structureIndex]) as GameObject;
-				newStructure.transform.position = lastHitObj.transform.position;
-				lastHitObj.tag = "PlacementPlane_Closed";
-				
-				gameMaster.Money -= allStructures[structureIndex].GetComponent<Tower>().price;
-				UpdateGUI();
-			}
-		}
-		else
-		{
-			print(@"**********Not enough money!**********");
-		}
-	}
-
-	void CancelBuildMode ()
-	{
-		structureIndex = -1;
-		if (lastHitObj)
-		{
-			lastHitObj.renderer.material = originalMat;
-			lastHitObj = null;
-		}
-		
-		SetActivePlacementPlanes(false);
 	}
 	
 	// TODO: pause of the sound isn't the best... http://answers.unity3d.com/questions/7544/how-do-i-pause-my-game.html

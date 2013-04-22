@@ -13,7 +13,6 @@ public class EnemyUnit : ExtendedUnit
 	
 	// AS = AudioSource
 	private AudioSource movingAS;
-	private GameMaster gameMaster;
 	
 	#region Getters & Setters
 	
@@ -55,7 +54,6 @@ public class EnemyUnit : ExtendedUnit
 		base.Start();
 		
 		myTransform.LookAt(pathManager.CurrentWaypoint.position);
-		gameMaster = GameObject.FindObjectOfType(typeof(GameMaster)) as GameMaster;
 		
 		// Play moving units sound
 		movingAS.Play();
@@ -98,7 +96,7 @@ public class EnemyUnit : ExtendedUnit
 		gameMaster.Money += reward;
 	}
 	
-	protected override void Destroy()
+	public override void Destroy()
 	{
 		base.Destroy();
 		AddScoreAndMoney();
