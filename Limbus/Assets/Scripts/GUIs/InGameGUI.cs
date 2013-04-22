@@ -174,6 +174,7 @@ public class InGameGUI : MonoBehaviour
 			{
 				GameObject newStructure = Instantiate(towersPool[structureIndex]) as GameObject;
 				newStructure.transform.position = lastHitObj.transform.position;
+				newStructure.SetActive(true);
 				lastHitObj.tag = "PlacementPlane_Closed";
 				
 				gameMaster.Money -= allStructures[structureIndex].GetComponent<Tower>().price;
@@ -322,6 +323,7 @@ public class InGameGUI : MonoBehaviour
 		for (int i = 0; i < towersPool.Length; i++)
 		{
 			towersPool[i] = (GameObject)Instantiate(allStructures[i], Vector3.zero, Quaternion.identity);
+			towersPool[i].SetActive(false);
 		}
 		
 		return towersPool;
