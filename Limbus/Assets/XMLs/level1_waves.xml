@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf8"?>
 
 <waves>
-	<numOfWaves>5</numOfWaves>	
+	<numOfWaves>1</numOfWaves>	
 	
 	<wave>
 		<name>Wave 1</name>
 		<unit>
 			<unitIndex>2</unitIndex>
 			<name>Tank</name>
-			<count>2</count>
+			<count>1</count>
 			<respawnIn>5</respawnIn>
 		</unit>
 		<pauseAfter>5</pauseAfter>
 	</wave>
 	
-	<wave>
+<!--	<wave>
 		<name>Wave 2</name>
 		<unit>
 			<unitIndex>4</unitIndex>
@@ -56,6 +56,6 @@
 			<respawnIn>1</respawnIn>
 		</unit>
 		<pauseAfter>5</pauseAfter>
-	</wave>
+	</wave>-->
 	
 </waves>

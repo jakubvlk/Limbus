@@ -12,10 +12,8 @@ public class InGameGUI : MonoBehaviour
 	public GameObject[] allStructures;
 	public UISlicedSprite[] buildBtnGraphics;
 	
-	public GameObject pauseMenu;	
-	
 	public UILabel waveText, scoreText, lifesText, moneyText, messageText;
-	public GameObject shopMenu, towerMenu;
+	public GameObject pauseMenu, shopMenu, towerMenu, winnerMenu, looserMenu;
 	
 	// Private
 	private Material originalMat;
@@ -47,6 +45,8 @@ public class InGameGUI : MonoBehaviour
 		GUIMode_Paused,
 		GUIMode_Running,
 		GUIMode_Upgrading,
+		GUIMode_Winner,
+		GUIMode_Looser
 	}
 	
 	
@@ -93,6 +93,8 @@ public class InGameGUI : MonoBehaviour
 			{
 				DoPauseToggle();
 			}
+			
+			EndOfGame ();
 		}
 		else if (guiMode == GUIMode.GUIMode_Paused)
 		{
@@ -103,10 +105,27 @@ public class InGameGUI : MonoBehaviour
 			if (Input.GetMouseButtonDown(0) )
 			{
 				DeselectTower();
-				SelectTower();
-				
+				SelectTower();				
 			}
+			
+			EndOfGame ();
 		}
+	}
+
+	void EndOfGame ()
+	{
+		// Check if is end of game
+		// Winner
+		if (gameMaster.Winner)
+		{
+			winnerMenu.SetActive(true);
+			guiMode = GUIMode.GUIMode_Winner;
+		}
+		// Looser
+		/*else if (gameMaster.Looser)
+		{
+			guiMode = GUIMode.GUIMode_Looser;
+		}*/
 	}
 
 	void SelectTower ()

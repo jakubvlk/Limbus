@@ -17,15 +17,21 @@ public class GameMaster : MonoBehaviour
 	private Wave[] wave;
 	private LoadWaves loadWaves;
 	private InGameGUI inGameGUI;
+	private bool noUnitsLeft;
 	
 	public int NumOfActiveUnits { get; set; }
+	
+	#region Getters & Setters
 	
 	public int NumOfWaves { 
 		get;
 		private set;
 	}
 	
-	#region Getters & Setters
+	public bool Winner {
+		get;
+		private set;
+	}
 	
 	public int Lifes {
 		get
@@ -84,6 +90,8 @@ public class GameMaster : MonoBehaviour
 		wave = loadWaves.Wave;
 		NumOfActiveUnits = wave[0].Unit.Count;
 		
+		Winner = false;
+		
 		//UpdateGUI();
 	}	
 	
@@ -117,8 +125,8 @@ public class GameMaster : MonoBehaviour
 				// If timer is OK...
 				if (Time.time > waveRespawnTimer + wave[NumOfWaves].PauseAfer)
 				{
-					NumOfWaves++;
 					NumOfActiveUnits = wave[NumOfWaves].Unit.Count;
+					NumOfWaves++;
 					//UpdateGUI();
 				}
 			}
@@ -126,6 +134,15 @@ public class GameMaster : MonoBehaviour
 			{
 				waveRespawnTimer = Time.time;
 			}
+		}
+		else
+		{
+			// WINNER
+			if (EndOfWave())
+			{
+				Winner = true;
+			}
+				
 		}
 	}
 	
