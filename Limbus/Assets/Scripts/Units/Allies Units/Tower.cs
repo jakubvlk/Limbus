@@ -6,6 +6,9 @@ public class Tower : ExtendedUnit
 	public int price;
 	
 	public float[] rankModifiers;
+	
+	public string name;
+	public string info;
 		
 	private Rank rank;
 	private float upgradePrice;
