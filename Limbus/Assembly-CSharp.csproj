@@ -127,6 +127,7 @@
      <Compile Include="Assets\Scripts\GUIs\InGameGUI.cs" />
      <Compile Include="Assets\Scripts\GUIs\LooserGUI.cs" />
      <Compile Include="Assets\Scripts\GUIs\MainMenuGUI.cs" />
+     <Compile Include="Assets\Scripts\GUIs\TowerInfoGUI.cs" />
      <Compile Include="Assets\Scripts\GUIs\WinnerGUI.cs" />
      <Compile Include="Assets\Scripts\GameMaster.cs" />
      <Compile Include="Assets\Scripts\LoadWaves.cs" />
@@ -164,6 +165,7 @@
      <None Include="Assets\NGUI\NGUI\Examples\Other\English.txt" />
      <None Include="Assets\_Models\Units\Enemy Units\Mine-resistant armored vehicle\license.txt" />
      <None Include="Assets\NGUI\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed).shader" />
+     <None Include="Assets\NGUI\NGUI Items\Fonts\Arial_20.txt" />
      <None Include="Assets\NGUI\NGUI\Resources\Shaders\Unlit - Additive Colored.shader" />
      <None Include="Assets\NGUI\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
      <None Include="Assets\NGUI\NGUI\Examples\Shaders\Refractive.shader" />

@@ -69,6 +69,7 @@
      <None Include="Assets\NGUI\NGUI\Examples\Other\English.txt" />
      <None Include="Assets\_Models\Units\Enemy Units\Mine-resistant armored vehicle\license.txt" />
      <None Include="Assets\NGUI\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed).shader" />
+     <None Include="Assets\NGUI\NGUI Items\Fonts\Arial_20.txt" />
      <None Include="Assets\NGUI\NGUI\Resources\Shaders\Unlit - Additive Colored.shader" />
      <None Include="Assets\NGUI\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
      <None Include="Assets\NGUI\NGUI\Examples\Shaders\Refractive.shader" />
