@@ -122,10 +122,11 @@ public class InGameGUI : MonoBehaviour
 			guiMode = GUIMode.GUIMode_Winner;
 		}
 		// Looser
-		/*else if (gameMaster.Looser)
+		else if (gameMaster.Looser)
 		{
+			looserMenu.SetActive(true);
 			guiMode = GUIMode.GUIMode_Looser;
-		}*/
+		}
 	}
 
 	void SelectTower ()

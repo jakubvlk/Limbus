@@ -11,9 +11,6 @@ public class HelicopterTrigger : Base {
 			gameMaster.Lifes--;
 		}
 		
-		if (gameMaster.Lifes <= 0)
-		{
-			print(@"********GAME OVER************");
-		}
+		Invoke("CheckLooser", 3);
     }
 }

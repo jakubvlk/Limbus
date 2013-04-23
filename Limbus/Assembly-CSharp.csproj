@@ -125,6 +125,7 @@
      <Compile Include="Assets\Scripts\Billboard.cs" />
      <Compile Include="Assets\Scripts\GUIs\ChooseLevelGUI.cs" />
      <Compile Include="Assets\Scripts\GUIs\InGameGUI.cs" />
+     <Compile Include="Assets\Scripts\GUIs\LooserGUI.cs" />
      <Compile Include="Assets\Scripts\GUIs\MainMenuGUI.cs" />
      <Compile Include="Assets\Scripts\GUIs\WinnerGUI.cs" />
      <Compile Include="Assets\Scripts\GameMaster.cs" />

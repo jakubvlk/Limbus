@@ -13,9 +13,14 @@ public class Base : DefaultUnit
 			gameMaster.Lifes--;
 		}
 		
+		Invoke("CheckLooser", 3);
+    }
+	
+	protected void CheckLooser()
+	{
 		if (gameMaster.Lifes <= 0)
 		{
-			print(@"********GAME OVER************");
+			gameMaster.Looser = true;
 		}
-    }
+	}
 }

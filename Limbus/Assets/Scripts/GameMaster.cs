@@ -33,6 +33,11 @@ public class GameMaster : MonoBehaviour
 		private set;
 	}
 	
+	public bool Looser {
+		get;
+		set;
+	}
+	
 	public int Lifes {
 		get
 		{
@@ -90,7 +95,7 @@ public class GameMaster : MonoBehaviour
 		wave = loadWaves.Wave;
 		NumOfActiveUnits = wave[0].Unit.Count;
 		
-		Winner = false;
+		Winner = Looser = false;
 		
 		//UpdateGUI();
 	}	
