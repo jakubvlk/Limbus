@@ -55,6 +55,7 @@
      <None Include="Assets\NGUI\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
      <None Include="Assets\XMLs\level2_waves.xml" />
      <None Include="Assets\NGUI\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
+     <None Include="Assets\NGUI\NGUI Items\Fonts\Arial_16.txt" />
      <None Include="Assets\NGUI\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
      <None Include="Assets\XMLs\level1_waves.xml" />
      <None Include="Assets\NGUI\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
