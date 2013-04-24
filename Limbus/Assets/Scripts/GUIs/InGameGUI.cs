@@ -29,6 +29,8 @@ public class InGameGUI : MonoBehaviour
 	
 	private GameObject selectedTower;
 	
+	private GameObject newTower;
+	
 	//	Num Constants
 	private const float ALERT_TIME = 3f;
 	private const float MESSAGE_TIME = 2f;
@@ -175,15 +177,23 @@ public class InGameGUI : MonoBehaviour
 		RaycastHit hit;
 		
 		if (Physics.Raycast(ray, out hit, 1000, placementLayerMask))
-		{
+		{			
 			if (lastHitObj)
 			{
 				lastHitObj.renderer.material = originalMat;
+				
+				newTower.transform.position = lastHitObj.transform.position;
 			}
 			
 			lastHitObj = hit.collider.gameObject;
 			originalMat = lastHitObj.renderer.material;
 			lastHitObj.renderer.material = hoverMat;
+			
+			if (!newTower)
+			{
+				newTower = Instantiate(towersPool[structureIndex]) as GameObject;
+				newTower.SetActive(true);
+			}
 		}
 		else
 		{
@@ -191,6 +201,7 @@ public class InGameGUI : MonoBehaviour
 			{
 				lastHitObj.renderer.material = originalMat;
 				lastHitObj = null;
+				Destroy(newTower);
 			}
 		}
 	}
