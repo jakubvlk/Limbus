@@ -29,8 +29,6 @@ public class InGameGUI : MonoBehaviour
 	
 	private GameObject selectedTower;
 	
-	private int hoverStructureIndex;
-	
 	//	Num Constants
 	private const float ALERT_TIME = 3f;
 	private const float MESSAGE_TIME = 2f;
@@ -319,18 +317,19 @@ public class InGameGUI : MonoBehaviour
 	
 	public void OnMouseOver(GameObject btnObj)
 	{		
+		int tmpStructureIndex = 0;
 		if (guiMode == GUIMode.GUIMode_Running)
 		{
 			switch (btnObj.name)
 			{
 				case "btn_MachineGun":
-					hoverStructureIndex = 0;
+					tmpStructureIndex = 0;
 					break;
 				case "btn_Anti-aircraft_Satellite":
-					hoverStructureIndex = 1;	
+					tmpStructureIndex = 1;	
 					break;
 				case "btn_GrenadeLauncher":
-					hoverStructureIndex = 2;
+					tmpStructureIndex = 2;
 					break;
 			}
 			
@@ -339,9 +338,9 @@ public class InGameGUI : MonoBehaviour
 				towerInfo.SetActive(true);
 			}
 			
-			towerInfo.GetComponent<TowerInfoGUI>().SetName(allStructures[hoverStructureIndex].GetComponent<Tower>().name);
-			towerInfo.GetComponent<TowerInfoGUI>().SetPrice(allStructures[hoverStructureIndex].GetComponent<Tower>().price);
-			towerInfo.GetComponent<TowerInfoGUI>().SetInfo(allStructures[hoverStructureIndex].GetComponent<Tower>().info);
+			towerInfo.GetComponent<TowerInfoGUI>().SetName(allStructures[tmpStructureIndex].GetComponent<Tower>().name);
+			towerInfo.GetComponent<TowerInfoGUI>().SetPrice(allStructures[tmpStructureIndex].GetComponent<Tower>().price);
+			towerInfo.GetComponent<TowerInfoGUI>().SetInfo(allStructures[tmpStructureIndex].GetComponent<Tower>().info);
 		}
 		else if (guiMode == GUIMode.GUIMode_Upgrading)
 		{			
