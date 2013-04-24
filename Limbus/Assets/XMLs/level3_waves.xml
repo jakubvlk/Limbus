@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf8"?>
+
+<waves>
+	<numOfWaves>5</numOfWaves>	
+	
+	<wave>
+		<name>Wave 1</name>
+		<unit>
+			<unitIndex>1</unitIndex>
+			<name>Boat</name>
+			<count>3</count>
+			<respawnIn>5</respawnIn>
+		</unit>
+		<pauseAfter>3</pauseAfter>
+	</wave>
+	
+	<wave>
+		<name>Wave 2</name>
+		<unit>
+			<unitIndex>1</unitIndex>
+			<name>Humvee</name>
+			<count>5</count>
+			<respawnIn>2</respawnIn>
+		</unit>
+		<pauseAfter>0</pauseAfter>
+	</wave>
+	
+	<wave>
+		<name>Wave 3</name>
+		<unit>
+			<unitIndex>3</unitIndex>
+			<name>Helicopter</name>
+			<count>5</count>
+			<respawnIn>1.5</respawnIn>
+		</unit>
+		<pauseAfter>5</pauseAfter>
+	</wave>
+	
+	<wave>
+		<name>Wave 4</name>
+		<unit>
+			<unitIndex>0</unitIndex>
+			<name>Soldiers</name>
+			<count>5</count>
+			<respawnIn>1</respawnIn>
+		</unit>
+		<pauseAfter>5</pauseAfter>
+	</wave>
+	
+</waves>
+
