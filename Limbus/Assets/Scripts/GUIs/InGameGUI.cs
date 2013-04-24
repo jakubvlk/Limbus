@@ -13,7 +13,7 @@ public class InGameGUI : MonoBehaviour
 	public UISlicedSprite[] buildBtnGraphics;
 	
 	public UILabel waveText, scoreText, lifesText, moneyText, messageText;
-	public GameObject pauseMenu, shopMenu, towerMenu, winnerMenu, looserMenu, towerInfo;
+	public GameObject pauseMenu, shopMenu, towerMenu, winnerMenu, looserMenu, towerInfo, upgradeInfo;
 	
 	// Private
 	private Material originalMat;
@@ -28,6 +28,8 @@ public class InGameGUI : MonoBehaviour
 	private GUIMode guiMode;
 	
 	private GameObject selectedTower;
+	
+	private int hoverStructureIndex;
 	
 	//	Num Constants
 	private const float ALERT_TIME = 3f;
@@ -316,33 +318,52 @@ public class InGameGUI : MonoBehaviour
 	}
 	
 	public void OnMouseOver(GameObject btnObj)
-	{
-		if (!towerInfo.activeSelf)
-			towerInfo.SetActive(true);
-		
-		int tmpStructureIndex = 0;
-		switch (btnObj.name)
+	{		
+		if (guiMode == GUIMode.GUIMode_Running)
 		{
-			case "btn_MachineGun":
-				tmpStructureIndex = 0;
-				break;
-			case "btn_Anti-aircraft_Satellite":
-				tmpStructureIndex = 1;	
-				break;
-			case "btn_GrenadeLauncher":
-				tmpStructureIndex = 2;
-				break;
+			switch (btnObj.name)
+			{
+				case "btn_MachineGun":
+					hoverStructureIndex = 0;
+					break;
+				case "btn_Anti-aircraft_Satellite":
+					hoverStructureIndex = 1;	
+					break;
+				case "btn_GrenadeLauncher":
+					hoverStructureIndex = 2;
+					break;
+			}
+			
+			if (!towerInfo.activeSelf)
+			{
+				towerInfo.SetActive(true);
+			}
+			
+			towerInfo.GetComponent<TowerInfoGUI>().SetName(allStructures[hoverStructureIndex].GetComponent<Tower>().name);
+			towerInfo.GetComponent<TowerInfoGUI>().SetPrice(allStructures[hoverStructureIndex].GetComponent<Tower>().price);
+			towerInfo.GetComponent<TowerInfoGUI>().SetInfo(allStructures[hoverStructureIndex].GetComponent<Tower>().info);
+		}
+		else if (guiMode == GUIMode.GUIMode_Upgrading)
+		{			
+			if (!upgradeInfo.activeSelf)
+			{
+				upgradeInfo.SetActive(true);
+			}
+			
+			upgradeInfo.GetComponent<UpgradeInfoGUI>().SetName(selectedTower.GetComponent<Tower>().name);
+			upgradeInfo.GetComponent<UpgradeInfoGUI>().SetPrice(selectedTower.GetComponent<Tower>().NewPrice());
+			upgradeInfo.GetComponent<UpgradeInfoGUI>().SetInfo(selectedTower.GetComponent<Tower>().TowerLevel);
 		}
 		
-		towerInfo.GetComponent<TowerInfoGUI>().SetName(allStructures[tmpStructureIndex].GetComponent<Tower>().name);
-		towerInfo.GetComponent<TowerInfoGUI>().SetPrice(allStructures[tmpStructureIndex].GetComponent<Tower>().price);
-		towerInfo.GetComponent<TowerInfoGUI>().SetInfo(allStructures[tmpStructureIndex].GetComponent<Tower>().info);
+		
 	}
 	
 	public void OnMouseOut(GameObject btnObj)
 	{
 		if (towerInfo.activeSelf)
 			towerInfo.SetActive(false);
+		else if (upgradeInfo.activeSelf)
+			upgradeInfo.SetActive(false);
 	}
 	
 	public void UpdateGUI()

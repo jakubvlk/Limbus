@@ -13,7 +13,7 @@ public class TowerInfoGUI : MonoBehaviour
 	public void SetPrice(int price)
 	{
 		
-		this.price.text = price.ToString() + "$";
+		this.price.text = @"Cost: " + price.ToString() + @"$";
 	}
 	
 	public void SetInfo(string info)

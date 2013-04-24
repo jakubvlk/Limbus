@@ -13,7 +13,8 @@ public class Tower : ExtendedUnit
 	private Rank rank;
 	private float upgradePrice;
 	
-	public int TowerLevel {
+	public int TowerLevel
+	{
 		get { return rank.RankValue; }
 	}
 	
@@ -27,11 +28,19 @@ public class Tower : ExtendedUnit
 		rankModifiers[2] = 1.3f;
 	}
 	
+	public int NewPrice()
+	{
+		if (rank.RankValue + 1 == rankModifiers.Length)
+			return 0;
+		
+		return Mathf.FloorToInt(price * rankModifiers[rank.RankValue + 1]);
+	}
+	
 	public string Promote()
 	{
 		if (rank.RankValue < 2)
 		{
-			int newPrice = Mathf.FloorToInt(price * rankModifiers[rank.RankValue + 1]);
+			int newPrice = NewPrice();
 			if (gameMaster.Money >=  newPrice)
 			{			
 				gameMaster.Money -= newPrice;
