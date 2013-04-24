@@ -24,7 +24,7 @@ public class UpgradeInfoGUI : MonoBehaviour {
 		}
 		else
 		{
-			this.info.text = @"# No other upgrades avaibled.";
+			this.info.text = @"# No other upgrade available .";
 		}
 			
 	}
