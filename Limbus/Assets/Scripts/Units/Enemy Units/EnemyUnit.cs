@@ -68,7 +68,7 @@ public class EnemyUnit : ExtendedUnit
 	
 	protected override void OnTriggerStay(Collider other)
 	{		
-		if (!myTarget && other.tag == "Tower")
+		if (!myTarget && other.tag == "Tower" && !other.GetComponent<ExtendedUnit>().Virtual)
 		{
 			myTarget = other.transform;
 		}

@@ -183,6 +183,7 @@ public class InGameGUI : MonoBehaviour
 				lastHitObj.renderer.material = originalMat;
 				
 				newTower.transform.position = lastHitObj.transform.position;
+				newTower.GetComponent<Tower>().Virtual = true;
 			}
 			
 			lastHitObj = hit.collider.gameObject;
@@ -231,7 +232,8 @@ public class InGameGUI : MonoBehaviour
 			StartCoroutine(ShowMessage(NOT_ENOUGH_MONEY, ALERT_TIME, true));
 		}
 	}
-		// - pridat k save a upgradu
+	
+	// TODO: pridat k save a upgradu
 	IEnumerator ShowMessage(string allertMessage, float duration, bool alert)
 	{
 		if (alert)
@@ -251,6 +253,7 @@ public class InGameGUI : MonoBehaviour
 		{
 			lastHitObj.renderer.material = originalMat;
 			lastHitObj = null;
+			Destroy(newTower);
 		}
 		
 		SetActivePlacementPlanes(false);

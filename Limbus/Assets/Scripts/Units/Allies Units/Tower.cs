@@ -13,10 +13,14 @@ public class Tower : ExtendedUnit
 	private Rank rank;
 	private float upgradePrice;
 	
+	#region Getters & Setters
+	
 	public int TowerLevel
 	{
 		get { return rank.RankValue; }
 	}
+	
+	#endregion
 	
 	protected override void Start()
 	{

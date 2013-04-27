@@ -18,6 +18,13 @@ public class ExtendedUnit : DefaultUnit {
 	private AudioSource fireAS, turretRotationAS;
 	private float firePause, fireTimer;
 	
+	// Unit is not moving, targeting - nothing, just standing on place
+	public bool Virtual
+	{
+		get;
+		set;
+	}
+	
 	// Use this for initialization
 	protected override void Start ()
 	{
@@ -26,11 +33,13 @@ public class ExtendedUnit : DefaultUnit {
 		
 		firePause = 0;
 		fireTimer = Time.time;
+		
+		Virtual = false;
 	}
 	
 	protected virtual void Update()
 	{
-		if (myTarget)
+		if (myTarget && !Virtual)
 		{
 			if (turret)
 			{
@@ -88,7 +97,7 @@ public class ExtendedUnit : DefaultUnit {
 		}
 	}
 
-	private void Fire ()
+	protected virtual void Fire ()
 	{
 		// Play fire sound
 		if (!fireAS.isPlaying)
