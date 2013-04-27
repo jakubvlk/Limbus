@@ -11,6 +11,7 @@ public class InGameGUI : MonoBehaviour
 	public Color onColor, offColor;
 	public GameObject[] allStructures;
 	public UISlicedSprite[] buildBtnGraphics;
+	public UISlicedSprite doubleSpeed;
 	
 	public UILabel waveText, scoreText, lifesText, moneyText, messageText;
 	public GameObject pauseMenu, shopMenu, towerMenu, winnerMenu, looserMenu, towerInfo, upgradeInfo;
@@ -113,10 +114,10 @@ public class InGameGUI : MonoBehaviour
 			EndOfGame ();
 		}
 	}
-
+	
+	// Check if is end of game
 	void EndOfGame ()
 	{
-		// Check if is end of game
 		// Winner
 		if (gameMaster.Winner)
 		{
@@ -379,7 +380,7 @@ public class InGameGUI : MonoBehaviour
 			upgradeInfo.SetActive(false);
 	}
 	
-	public void UpdateGUI()
+	public virtual void UpdateGUI()
 	{
 		foreach (UISlicedSprite theBtnGraphic in buildBtnGraphics)
 		{
@@ -429,10 +430,12 @@ public class InGameGUI : MonoBehaviour
     	if(Time.timeScale == 1)
 		{
         	Time.timeScale = 2;
+			doubleSpeed.color = Color.red;
 		}
 		else
 		{
 			Time.timeScale = 1;
+			doubleSpeed.color = offColor;
 		}
 	}	
 		
