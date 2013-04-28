@@ -4,28 +4,23 @@ using System.Collections;
 public class Soldiers : EnemyUnit {
 
 	// Use this for initialization
-	void Start () {
+	protected override void Start () {
 		
-		base.Start();		
-		myTransform.LookAt(pathManager.CurrentWaypoint.position);
+		firePause = 0;
+		fireTimer = Time.time;		
+		Virtual = false;
+		myTransform = transform;
+		currHealth = maxHealth;
+		gameMaster = GameObject.FindObjectOfType(typeof(GameMaster)) as GameMaster;
+		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected override void Update () {
 		if(!animation.isPlaying)
 		animation.Play();
 	}
 	
-	void Awake()
-	{
-		
-	}
-	
-	private void Move ()
-	{
-	
-		
-	}
 	
 	protected override void InitSound ()
 	{

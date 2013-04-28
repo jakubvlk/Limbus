@@ -143,6 +143,7 @@
      <Compile Include="Assets\Scripts\Units\Base\HelicopterTrigger.cs" />
      <Compile Include="Assets\Scripts\Units\DefaultUnit.cs" />
      <Compile Include="Assets\Scripts\Units\Enemy Units\EnemyUnit.cs" />
+     <Compile Include="Assets\Scripts\Units\Enemy Units\GroupOfSoldiers.cs" />
      <Compile Include="Assets\Scripts\Units\Enemy Units\Soldiers.cs" />
      <Compile Include="Assets\Scripts\Units\ExtendedUnit.cs" />
      <None Include="Assets\XMLs\level3_waves.xml" />

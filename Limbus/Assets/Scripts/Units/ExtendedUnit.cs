@@ -7,6 +7,7 @@ public class ExtendedUnit : DefaultUnit {
 	public float turretRotationSpeed;
 	//public float power;
 	public GameObject explosion;
+	public GameObject fireEffect;
 	public AudioClip fireSound, turretRotationSound;
 	public int fireRatePerMin;
 	public GameObject projectile;
@@ -16,7 +17,8 @@ public class ExtendedUnit : DefaultUnit {
 	protected Quaternion desiredRotation;
 	
 	private AudioSource fireAS, turretRotationAS;
-	private float firePause, fireTimer;
+	protected float firePause, fireTimer;
+	
 	
 	// Unit is not moving, targeting - nothing, just standing on place
 	public bool Virtual
@@ -93,6 +95,7 @@ public class ExtendedUnit : DefaultUnit {
 			// Stop sounds
 			// TODO: asi pro nektere jednotky jo a pro nektere ne (delo musi doznit v dalce, vojaci musi prestat strilet)
 			//fireAS.Stop();
+			if(turret && turretRotationSound)
 			turretRotationAS.Stop();
 		}
 	}
@@ -115,7 +118,17 @@ public class ExtendedUnit : DefaultUnit {
 			int muzzleIndex = Random.Range(0, muzzleTransform.Length);
 			GameObject newMissile = Instantiate(projectile, muzzleTransform[muzzleIndex].position, muzzleTransform[muzzleIndex].rotation) as GameObject;
 			newMissile.GetComponent<Missile>().MyTarget = myTarget;
+			
+			//Fire effect
+			if(fireEffect)
+			{
+				GameObject newFireEffect = Instantiate(fireEffect, muzzleTransform[muzzleIndex].position, muzzleTransform[muzzleIndex].rotation) as GameObject;
+				Destroy(newFireEffect,1);
+			}
+			
 		}
+		
+		
 		
 		// Get a hit
 		//myTarget.GetComponent<ExtendedUnit>().GetHit(power);
