@@ -22,7 +22,7 @@
 			<count>5</count>
 			<respawnIn>2</respawnIn>
 		</unit>
-		<pauseAfter>0</pauseAfter>
+		<pauseAfter>1</pauseAfter>
 	</wave>
 	
 	<wave>
@@ -30,7 +30,7 @@
 		<unit>
 			<unitIndex>3</unitIndex>
 			<name>Helicopter</name>
-			<count>5</count>
+			<count>3</count>
 			<respawnIn>1.5</respawnIn>
 		</unit>
 		<pauseAfter>5</pauseAfter>
