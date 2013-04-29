@@ -8,9 +8,7 @@ public class Base : DefaultUnit
 	{
 		if (other.tag == "GroundEnemy" || other.tag == "WaterEnemy")
 		{
-			gameMaster.NumOfActiveUnits--;
-        	Destroy(other.gameObject);
-			gameMaster.Lifes--;
+			AfterReachingBase(other);
 		}
 		
 		Invoke("CheckLooser", 3);
@@ -22,5 +20,12 @@ public class Base : DefaultUnit
 		{
 			gameMaster.Looser = true;
 		}
+	}
+	
+	protected void AfterReachingBase(Collider other)
+	{
+		gameMaster.NumOfActiveUnits--;
+       	Destroy(other.gameObject);
+		gameMaster.Lifes--;
 	}
 }

@@ -7,8 +7,7 @@ public class HelicopterTrigger : Base {
 	{
 		if (other.tag == "AirEnemy")
 		{
-        	Destroy(other.gameObject);
-			gameMaster.Lifes--;
+        	AfterReachingBase(other);
 		}
 		
 		Invoke("CheckLooser", 3);

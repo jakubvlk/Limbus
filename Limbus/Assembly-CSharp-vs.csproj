@@ -143,6 +143,7 @@
      <Compile Include="Assets\Scripts\Units\DefaultUnit.cs" />
      <Compile Include="Assets\Scripts\Units\Enemy Units\EnemyUnit.cs" />
      <Compile Include="Assets\Scripts\Units\ExtendedUnit.cs" />
+     <Compile Include="Assets\_Prefabs\ParticleEffects\SimpleParticlePack\Scripts\ParticleTester.cs" />
      <None Include="Assets\XMLs\level3_waves.xml" />
      <None Include="Assets\NGUI\NGUI\Resources\Shaders\Depth.shader" />
      <None Include="Assets\_Models\Units\Allies Units\Satellite Dish - by ConceptX\FBX\S_SatelliteDish_ConceptX.obj.txt" />

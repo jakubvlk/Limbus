@@ -14,7 +14,7 @@
 		<pauseAfter>5</pauseAfter>
 	</wave>
 	
-<!--	<wave>
+	<wave>
 		<name>Wave 2</name>
 		<unit>
 			<unitIndex>4</unitIndex>
@@ -22,18 +22,18 @@
 			<count>1</count>
 			<respawnIn>3</respawnIn>
 		</unit>
-		<pauseAfter>5</pauseAfter>
+		<pauseAfter>10</pauseAfter>
 	</wave>
 	
 	<wave>
 		<name>Wave 3</name>
 		<unit>
-			<unitIndex>4</unitIndex>
+			<unitIndex>3</unitIndex>
 			<name>Helicopter</name>
 			<count>2</count>
 			<respawnIn>5</respawnIn>
 		</unit>
-		<pauseAfter>0</pauseAfter>
+		<pauseAfter>5</pauseAfter>
 	</wave>
 	
 	<wave>
@@ -56,6 +56,6 @@
 			<respawnIn>1</respawnIn>
 		</unit>
 		<pauseAfter>5</pauseAfter>
-	</wave>-->
+	</wave>
 	
 </waves>
