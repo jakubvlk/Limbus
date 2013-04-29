@@ -102,15 +102,12 @@ public class EnemyUnit : ExtendedUnit
 	{
 		base.Destroy();
 		AddScoreAndMoney();
-<<<<<<< HEAD
-		if (gameMaster.NumOfActiveUnits > 0)
-			gameMaster.NumOfActiveUnits--;
-=======
 		//small tmp fix
-		if(gameObject.name != "SoldierInGroup"){
-		gameMaster.NumOfActiveUnits--;
+		if(gameObject.name != "SoldierInGroup" && gameMaster.NumOfActiveUnits > 0)
+		{
+			gameMaster.NumOfActiveUnits--;
 		}
->>>>>>> 3becbd3e2c059a3ea7f87649c0f90ed94af9dc92
+
 	}
 
 	protected override void InitSound ()
