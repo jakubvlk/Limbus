@@ -6,7 +6,7 @@ public class Missile : MonoBehaviour {
 	public GameObject myExplosion;
 	public float mySpeed = 10;
 	public float minDistance;
-	public float damage = 5;
+	public float damage = 10;
 	
 	private float lifeTimer;
 

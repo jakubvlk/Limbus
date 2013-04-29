@@ -2,17 +2,19 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\XMLs\level1_waves.xml">
     <Files>
-      <File FileName="Assets\XMLs\level1_waves.xml" Line="22" Column="13" />
-      <File FileName="Assets\Scripts\GameMaster.cs" Line="132" Column="19" />
+      <File FileName="Assets\XMLs\level1_waves.xml" Line="4" Column="16" />
+      <File FileName="Assets\Scripts\GameMaster.cs" Line="154" Column="17" />
       <File FileName="Assets\Scripts\Units\Base\Base.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Units\Base\HelicopterTrigger.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Units\ExtendedUnit.cs" Line="8" Column="23" />
-      <File FileName="Assets\Scripts\Units\DefaultUnit.cs" Line="9" Column="8" />
-      <File FileName="Assets\Scripts\LoadWaves.cs" Line="9" Column="2" />
+      <File FileName="Assets\Scripts\Units\Allies Units\Tower.cs" Line="52" Column="14" />
+      <File FileName="Assets\Scripts\Missile.cs" Line="9" Column="26" />
+      <File FileName="Assets\Scripts\GUIs\InGameGUI.cs" Line="360" Column="65" />
+      <File FileName="Assets\Scripts\Units\Enemy Units\EnemyUnit.cs" Line="108" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\jakvl_000\Documents\GitHub\Limbus\Limbus\Assets\Scripts\GameMaster.cs" line="111" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

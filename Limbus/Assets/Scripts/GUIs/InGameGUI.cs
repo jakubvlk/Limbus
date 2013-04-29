@@ -357,7 +357,7 @@ public class InGameGUI : MonoBehaviour
 			towerInfo.GetComponent<TowerInfoGUI>().SetPrice(allStructures[tmpStructureIndex].GetComponent<Tower>().price);
 			towerInfo.GetComponent<TowerInfoGUI>().SetInfo(allStructures[tmpStructureIndex].GetComponent<Tower>().info);
 		}
-		else if (guiMode == GUIMode.GUIMode_Upgrading)
+		else if (guiMode == GUIMode.GUIMode_Upgrading && selectedTower)
 		{			
 			if (!upgradeInfo.activeSelf)
 			{
@@ -429,7 +429,7 @@ public class InGameGUI : MonoBehaviour
 	{
     	if(Time.timeScale == 1)
 		{
-        	Time.timeScale = 2;
+        	Time.timeScale = 4;
 			doubleSpeed.color = Color.red;
 		}
 		else

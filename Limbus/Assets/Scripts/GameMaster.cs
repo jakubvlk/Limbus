@@ -132,6 +132,7 @@ public class GameMaster : MonoBehaviour
 					NumOfWaves++;
 					if (NumOfWaves < loadWaves.NumOfWaves)
 						NumOfActiveUnits = wave[NumOfWaves].Unit.Count;
+					inGameGUI.UpdateGUI();
 				}
 			}
 			else

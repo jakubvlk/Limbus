@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf8"?>
 
 <waves>
-	<numOfWaves>2</numOfWaves>
+	<numOfWaves>10</numOfWaves>
 
 	<wave>
 		<name>Wave 1</name>
@@ -23,6 +23,94 @@
 			<respawnIn>1</respawnIn>
 		</unit>
 		<pauseAfter>5</pauseAfter>
+	</wave>	
+	
+	<wave>
+		<name>Wave 3</name>
+		<unit>
+			<unitIndex>0</unitIndex>
+			<name>Soldiers</name>
+			<count>15</count>
+			<respawnIn>1</respawnIn>
+		</unit>
+		<pauseAfter>10</pauseAfter>
+	</wave>	
+	
+	<wave>
+		<name>Wave 4</name>
+		<unit>
+			<unitIndex>1</unitIndex>
+			<name>Humvee</name>
+			<count>4</count>
+			<respawnIn>2</respawnIn>
+		</unit>
+		<pauseAfter>5</pauseAfter>
+	</wave>	
+	
+	<wave>
+		<name>Wave 5</name>
+		<unit>
+			<unitIndex>1</unitIndex>
+			<name>Humvee</name>
+			<count>8</count>
+			<respawnIn>2</respawnIn>
+		</unit>
+		<pauseAfter>10</pauseAfter>
+	</wave>	
+	
+	<wave>
+		<name>Wave 6</name>
+		<unit>
+			<unitIndex>2</unitIndex>
+			<name>Tank</name>
+			<count>3</count>
+			<respawnIn>3</respawnIn>
+		</unit>
+		<pauseAfter>5</pauseAfter>
+	</wave>	
+	
+	<wave>
+		<name>Wave 7</name>
+		<unit>
+			<unitIndex>2</unitIndex>
+			<name>Tank</name>
+			<count>5</count>
+			<respawnIn>3</respawnIn>
+		</unit>
+		<pauseAfter>5</pauseAfter>
+	</wave>	
+	
+	<wave>
+		<name>Wave 8</name>
+		<unit>
+			<unitIndex>1</unitIndex>
+			<name>Humvee</name>
+			<count>7</count>
+			<respawnIn>2</respawnIn>
+		</unit>
+		<pauseAfter>5</pauseAfter>
+	</wave>	
+	
+	<wave>
+		<name>Wave 9</name>
+		<unit>
+			<unitIndex>2</unitIndex>
+			<name>Tank</name>
+			<count>8</count>
+			<respawnIn>3</respawnIn>
+		</unit>
+		<pauseAfter>0</pauseAfter>
+	</wave>	
+	
+	<wave>
+		<name>Wave 10</name>
+		<unit>
+			<unitIndex>3</unitIndex>
+			<name>Helicopter</name>
+			<count>3</count>
+			<respawnIn>3</respawnIn>
+		</unit>
+		<pauseAfter>3</pauseAfter>
 	</wave>	
 	
 </waves>

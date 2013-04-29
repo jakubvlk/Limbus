@@ -49,8 +49,9 @@ public class Tower : ExtendedUnit
 			{			
 				gameMaster.Money -= newPrice;
 				
-				// better damage
-				projectile.GetComponent<Missile>().damage = projectile.GetComponent<Missile>().damage * rankModifiers[rank.RankValue + 1];
+				// higher damage
+				float damage = projectile.GetComponent<Missile>().damage;
+				projectile.GetComponent<Missile>().damage = damage * rankModifiers[rank.RankValue + 1];
 				
 				// more health
 				maxHealth = maxHealth * rankModifiers[rank.RankValue + 1];

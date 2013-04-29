@@ -102,7 +102,8 @@ public class EnemyUnit : ExtendedUnit
 	{
 		base.Destroy();
 		AddScoreAndMoney();
-		gameMaster.NumOfActiveUnits--;
+		if (gameMaster.NumOfActiveUnits > 0)
+			gameMaster.NumOfActiveUnits--;
 	}
 
 	protected override void InitSound ()
