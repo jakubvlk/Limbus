@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf8"?>
 
 <waves>
-	<numOfWaves>1</numOfWaves>	
+	<numOfWaves>5</numOfWaves>	
 	
 	<wave>
 		<name>Wave 1</name>
