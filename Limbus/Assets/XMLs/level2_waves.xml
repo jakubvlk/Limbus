@@ -6,7 +6,7 @@
 	<wave>
 		<name>Wave 1</name>
 		<unit>
-			<unitIndex>0</unitIndex>
+			<unitIndex>2</unitIndex>
 			<name>Tank</name>
 			<count>3</count>
 			<respawnIn>5</respawnIn>
@@ -33,7 +33,7 @@
 			<count>5</count>
 			<respawnIn>1.5</respawnIn>
 		</unit>
-		<pauseAfter>5</pauseAfter>
+		<pauseAfter>0</pauseAfter>
 	</wave>
 	
 	<wave>
@@ -42,7 +42,17 @@
 			<unitIndex>0</unitIndex>
 			<name>Soldiers</name>
 			<count>5</count>
-			<respawnIn>1</respawnIn>
+			<respawnIn>3</respawnIn>
+		</unit>
+		<pauseAfter>5</pauseAfter>
+	</wave>
+	<wave>
+		<name>Wave 5</name>
+		<unit>
+			<unitIndex>0</unitIndex>
+			<name>Soldiers</name>
+			<count>5</count>
+			<respawnIn>3</respawnIn>
 		</unit>
 		<pauseAfter>5</pauseAfter>
 	</wave>

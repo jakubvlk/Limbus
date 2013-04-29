@@ -10,7 +10,9 @@ public class GroupOfSoldiers : EnemyUnit {
 			base.Update();
 			if(transform.childCount == 0){
 			//need to destroy parent object, because single soldiers are standalone objects
-				Destroy(gameObject);
+			gameMaster.NumOfActiveUnits--;	
+			print("Group destroyed left : " + gameMaster.NumOfActiveUnits);
+			Destroy(gameObject);
 		}
 	}
 	
