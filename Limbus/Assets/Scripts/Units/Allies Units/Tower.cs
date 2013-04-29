@@ -37,7 +37,7 @@ public class Tower : ExtendedUnit
 		if (rank.RankValue + 1 == rankModifiers.Length)
 			return 0;
 		
-		return Mathf.FloorToInt(price * rankModifiers[rank.RankValue + 1]);
+		return Mathf.FloorToInt((price / 2f) * rankModifiers[rank.RankValue + 1]);
 	}
 	
 	public string Promote()

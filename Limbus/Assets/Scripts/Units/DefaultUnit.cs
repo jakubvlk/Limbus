@@ -6,7 +6,7 @@ public class DefaultUnit : MonoBehaviour {
 	public float maxHealth;
 	
 	protected Transform myTransform;
-	protected float currHealth;
+	public float currHealth;
 	protected GameMaster gameMaster;
 	
 	// Use this for initialization

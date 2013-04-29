@@ -1,10 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\XMLs\level1_waves.xml">
+    <Files>
+      <File FileName="Assets\XMLs\level1_waves.xml" Line="22" Column="13" />
+      <File FileName="Assets\Scripts\GameMaster.cs" Line="132" Column="19" />
+      <File FileName="Assets\Scripts\Units\Base\Base.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Units\Base\HelicopterTrigger.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Units\ExtendedUnit.cs" Line="8" Column="23" />
+      <File FileName="Assets\Scripts\Units\DefaultUnit.cs" Line="9" Column="8" />
+      <File FileName="Assets\Scripts\LoadWaves.cs" Line="9" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="C:\Users\jakvl_000\Documents\GitHub\Limbus\Limbus\Assets\Scripts\GameMaster.cs" line="112" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

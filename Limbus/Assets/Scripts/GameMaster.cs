@@ -3,7 +3,6 @@ using System.Collections;
 
 public class GameMaster : MonoBehaviour
 {	
-	public int levelNumber;
 	public Transform groundRespawn, airRespawn, waterRespawn;
 	public GameObject[] allUnits;
 	
@@ -130,9 +129,9 @@ public class GameMaster : MonoBehaviour
 				// If timer is OK...
 				if (Time.time > waveRespawnTimer + wave[NumOfWaves].PauseAfer)
 				{
-					NumOfActiveUnits = wave[NumOfWaves].Unit.Count;
 					NumOfWaves++;
-					//UpdateGUI();
+					if (NumOfWaves < loadWaves.NumOfWaves)
+						NumOfActiveUnits = wave[NumOfWaves].Unit.Count;
 				}
 			}
 			else
