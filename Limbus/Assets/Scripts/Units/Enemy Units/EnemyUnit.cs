@@ -56,7 +56,9 @@ public class EnemyUnit : ExtendedUnit
 		myTransform.LookAt(pathManager.CurrentWaypoint.position);
 		
 		// Play moving units sound
+		if(movingAS){
 		movingAS.Play();
+		}
 	}
 	
 	// Update is called once per frame

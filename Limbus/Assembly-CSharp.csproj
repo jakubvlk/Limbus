@@ -44,6 +44,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\FlashLight.cs" />
      <Compile Include="Assets\NGUI\NGUI\Examples\Scripts\Other\ChatInput.cs" />
      <Compile Include="Assets\NGUI\NGUI\Examples\Scripts\Other\DownloadTexture.cs" />
      <Compile Include="Assets\NGUI\NGUI\Examples\Scripts\Other\DragDropContainer.cs" />
@@ -142,6 +143,8 @@
      <Compile Include="Assets\Scripts\Units\Base\HelicopterTrigger.cs" />
      <Compile Include="Assets\Scripts\Units\DefaultUnit.cs" />
      <Compile Include="Assets\Scripts\Units\Enemy Units\EnemyUnit.cs" />
+     <Compile Include="Assets\Scripts\Units\Enemy Units\GroupOfSoldiers.cs" />
+     <Compile Include="Assets\Scripts\Units\Enemy Units\Soldiers.cs" />
      <Compile Include="Assets\Scripts\Units\ExtendedUnit.cs" />
      <Compile Include="Assets\_Prefabs\ParticleEffects\SimpleParticlePack\Scripts\ParticleTester.cs" />
      <None Include="Assets\XMLs\level3_waves.xml" />
