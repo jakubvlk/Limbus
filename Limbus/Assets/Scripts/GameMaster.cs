@@ -102,6 +102,7 @@ public class GameMaster : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{		
+		
 		Respawn ();
 	}
 	
@@ -110,7 +111,7 @@ public class GameMaster : MonoBehaviour
 		// If there is any other wave
 		if (NumOfWaves < loadWaves.NumOfWaves)
 		{
-			if (wave[NumOfWaves].Unit.Count > 0 && Time.time >= respawnTimer + wave[NumOfWaves].Unit.RespawnIn)
+			if (wave[NumOfWaves].Unit.Count > 0 && Time.time >= respawnTimer + wave[NumOfWaves].Unit.RespawnIn && !Looser )
 			{
 				GameObject newUnit = (GameObject) Instantiate((GameObject)allUnits[wave[NumOfWaves].Unit.UnitIndex], Vector3.zero, Quaternion.identity);
 				newUnit.transform.position = newUnit.GetComponent<EnemyUnit>().RespawnPoint;

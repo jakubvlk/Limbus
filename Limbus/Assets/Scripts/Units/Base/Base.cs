@@ -24,8 +24,11 @@ public class Base : DefaultUnit
 	
 	protected void AfterReachingBase(Collider other)
 	{
-		gameMaster.NumOfActiveUnits--;
-       	Destroy(other.gameObject);
+		if(gameObject.name != "SoldierInGroup" && gameMaster.NumOfActiveUnits > 0)
+		{
+			gameMaster.NumOfActiveUnits--;
+		}
+       	Destroy(other.gameObject);		
 		gameMaster.Lifes--;
 	}
 }

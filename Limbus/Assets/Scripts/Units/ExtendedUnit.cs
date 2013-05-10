@@ -146,6 +146,9 @@ public class ExtendedUnit : DefaultUnit {
 		currHealth -= healthLost;
 		if (currHealth <= 0)
 		{
+			if(gameObject.tag == "Tower"){
+			Messenger<GameObject>.Broadcast("tower destroyed", gameObject);
+			}
 			Destroy();
 		}
 	}

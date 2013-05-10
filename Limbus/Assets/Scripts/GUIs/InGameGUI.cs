@@ -63,6 +63,8 @@ public class InGameGUI : MonoBehaviour
 		towersPool = MakeTowersPool();
 		guiMode = GUIMode.GUIMode_Running;
 		selectedTower = null;
+		Messenger<GameObject>.AddListener("tower destroyed", OnTowerDestroy);
+		
 	}
 	
 	// Update is called once per frame
@@ -163,12 +165,20 @@ public class InGameGUI : MonoBehaviour
 	private void OpenPlacementPlane(Vector3 towerPosition)
 	{		
 		Ray ray = Camera.main.ScreenPointToRay(towerPosition);
+		print(towerPosition);
+		
 		RaycastHit hit;
 		
+		SetActivePlacementPlanes(true);
 		if (Physics.Raycast(ray, out hit, 1000, placementLayerMask))
 		{
-			hit.collider.gameObject.tag = "PlacementPlane_Open";
+			print (hit.collider.gameObject.transform.position);
+			hit.collider.gameObject.tag = "PlacementPlane_Open";			
 		}
+		
+		
+		SetActivePlacementPlanes(false);
+		
 	}
 
 	void HighlightPlacements ()
@@ -212,7 +222,8 @@ public class InGameGUI : MonoBehaviour
 	{
 		// enough money?..
 		if (gameMaster.Money >= allStructures[structureIndex].GetComponent<Tower>().price)
-		{			
+		{		
+			print (lastHitObj.tag);
 			if (lastHitObj.tag == "PlacementPlane_Open")
 			{
 				GameObject newStructure = Instantiate(towersPool[structureIndex]) as GameObject;
@@ -463,6 +474,12 @@ public class InGameGUI : MonoBehaviour
 			guiMode = GUIMode.GUIMode_Upgrading;
 		else if (guiMode == GUIMode.GUIMode_Upgrading)
 			guiMode = GUIMode.GUIMode_Running;
+	}
+	
+	void OnTowerDestroy(GameObject tower){
+			
+		OpenPlacementPlane(tower.transform.position);
+		
 	}
 }
 
