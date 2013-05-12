@@ -22,7 +22,7 @@
 			<count>2</count>
 			<respawnIn>5</respawnIn>
 		</unit>
-		<pauseAfter>0</pauseAfter>
+		<pauseAfter>3</pauseAfter>
 	</wave>
 	
 	<wave>
@@ -30,7 +30,7 @@
 		<unit>
 			<unitIndex>1</unitIndex>
 			<name>Humvee</name>
-			<count>5</count>
+			<count>10</count>
 			<respawnIn>1.5</respawnIn>
 		</unit>
 		<pauseAfter>0</pauseAfter>
@@ -41,18 +41,18 @@
 		<unit>
 			<unitIndex>0</unitIndex>
 			<name>Soldiers</name>
-			<count>5</count>
-			<respawnIn>3</respawnIn>
+			<count>15</count>
+			<respawnIn>2.5</respawnIn>
 		</unit>
 		<pauseAfter>5</pauseAfter>
 	</wave>
 	<wave>
 		<name>Wave 5</name>
 		<unit>
-			<unitIndex>0</unitIndex>
-			<name>Soldiers</name>
-			<count>5</count>
-			<respawnIn>3</respawnIn>
+			<unitIndex>1</unitIndex>
+			<name>Humvee</name>
+			<count>15</count>
+			<respawnIn>1</respawnIn>
 		</unit>
 		<pauseAfter>5</pauseAfter>
 	</wave>
@@ -61,8 +61,8 @@
 		<unit>
 			<unitIndex>2</unitIndex>
 			<name>Tank</name>
-			<count>3</count>
-			<respawnIn>5</respawnIn>
+			<count>12</count>
+			<respawnIn>3</respawnIn>
 		</unit>
 		<pauseAfter>3</pauseAfter>
 	</wave>
@@ -72,18 +72,18 @@
 		<unit>
 			<unitIndex>3</unitIndex>
 			<name>Helicopter</name>
-			<count>2</count>
-			<respawnIn>5</respawnIn>
+			<count>5</count>
+			<respawnIn>2.5</respawnIn>
 		</unit>
-		<pauseAfter>0</pauseAfter>
+		<pauseAfter>3</pauseAfter>
 	</wave>
 	
 	<wave>
 		<name>Wave 8</name>
 		<unit>
-			<unitIndex>1</unitIndex>
-			<name>Humvee</name>
-			<count>5</count>
+			<unitIndex>0</unitIndex>
+			<name>Soldiers</name>
+			<count>15</count>
 			<respawnIn>1.5</respawnIn>
 		</unit>
 		<pauseAfter>0</pauseAfter>
@@ -92,20 +92,20 @@
 	<wave>
 		<name>Wave 9</name>
 		<unit>
-			<unitIndex>0</unitIndex>
-			<name>Soldiers</name>
-			<count>5</count>
-			<respawnIn>3</respawnIn>
+			<unitIndex>1</unitIndex>
+			<name>Humvee</name>
+			<count>20</count>
+			<respawnIn>1</respawnIn>
 		</unit>
 		<pauseAfter>5</pauseAfter>
 	</wave>
 	<wave>
 		<name>Wave 10</name>
 		<unit>
-			<unitIndex>0</unitIndex>
-			<name>Soldiers</name>
-			<count>5</count>
-			<respawnIn>3</respawnIn>
+			<unitIndex>2</unitIndex>
+			<name>Tank</name>
+			<count>12</count>
+			<respawnIn>2.5</respawnIn>
 		</unit>
 		<pauseAfter>5</pauseAfter>
 	</wave>
