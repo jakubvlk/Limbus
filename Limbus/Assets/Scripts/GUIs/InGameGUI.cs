@@ -402,7 +402,7 @@ public class InGameGUI : MonoBehaviour
 			buildBtnGraphics[structureIndex].color = onColor;
 		}
 		
-		waveText.text = @"Wave: " + (gameMaster.NumOfWaves + 1);
+		waveText.text = @"Wave: " + (gameMaster.NumOfWaves + 1) + @"/10";
 		scoreText.text = @"Score: " + gameMaster.Score;
 		moneyText.text = @"Money: " + gameMaster.Money + @"$";
 		lifesText.text = @"Lifes: " + gameMaster.Lifes;
