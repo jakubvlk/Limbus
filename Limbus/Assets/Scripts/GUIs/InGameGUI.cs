@@ -29,7 +29,7 @@ public class InGameGUI : MonoBehaviour
 	private GUIMode guiMode;
 	
 	private GameObject selectedTower;
-	
+	private GameObject placementOfSelectedTower;	
 	private GameObject newTower;
 	
 	//	Num Constants
@@ -64,6 +64,7 @@ public class InGameGUI : MonoBehaviour
 		guiMode = GUIMode.GUIMode_Running;
 		selectedTower = null;
 		Messenger<GameObject>.AddListener("tower destroyed", OnTowerDestroy);
+		placementOfSelectedTower = null;
 		
 	}
 	
@@ -164,21 +165,15 @@ public class InGameGUI : MonoBehaviour
 	
 	private void OpenPlacementPlane(Vector3 towerPosition)
 	{		
-		Ray ray = Camera.main.ScreenPointToRay(towerPosition);
-		print(towerPosition);
+		Ray ray = Camera.main.ScreenPointToRay(new Vector3(towerPosition.x, towerPosition.y + 20, towerPosition.z));
 		
 		RaycastHit hit;
 		
-		SetActivePlacementPlanes(true);
 		if (Physics.Raycast(ray, out hit, 1000, placementLayerMask))
 		{
 			print (hit.collider.gameObject.transform.position);
 			hit.collider.gameObject.tag = "PlacementPlane_Open";			
-		}
-		
-		
-		SetActivePlacementPlanes(false);
-		
+		}		
 	}
 
 	void HighlightPlacements ()
@@ -200,6 +195,7 @@ public class InGameGUI : MonoBehaviour
 			lastHitObj = hit.collider.gameObject;
 			originalMat = lastHitObj.renderer.material;
 			lastHitObj.renderer.material = hoverMat;
+			placementOfSelectedTower = lastHitObj;
 			
 			if (!newTower)
 			{
@@ -333,7 +329,9 @@ public class InGameGUI : MonoBehaviour
 					}
 					break;
 				case "btn_Delete":
-					OpenPlacementPlane(selectedTower.transform.position);
+					//OpenPlacementPlane(selectedTower.transform.position);
+					placementOfSelectedTower.tag = @"PlacementPlane_Open";
+					placementOfSelectedTower = null;
 					selectedTower.GetComponent<Tower>().Destroy();
 					ToggleUpgrade();
 					break;
