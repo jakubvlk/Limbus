@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf8"?>
 
 <waves>
-	<numOfWaves>10</numOfWaves>
-
 	<wave>
 		<name>Wave 1</name>
 		<unit>

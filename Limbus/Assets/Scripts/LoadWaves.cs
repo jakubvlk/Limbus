@@ -15,14 +15,18 @@ public class LoadWaves : MonoBehaviour {
 		XmlDocument xmlDoc = new XmlDocument(); // xmlDoc is the new xml document.
 	  	xmlDoc.LoadXml(xmlFile.text); // load the file.
 		
-		// Number of waves
-		XmlNodeList levelsList = xmlDoc.GetElementsByTagName(@"numOfWaves");
-		NumOfWaves = int.Parse(levelsList[0].InnerText);
+		XmlNodeList levelsList = xmlDoc.GetElementsByTagName(@"wave"); // array of the level nodes.
+		
+		// Number of waves		
+		NumOfWaves = 0;
+		foreach (XmlNode levelInfo in levelsList)
+  		{
+			NumOfWaves++;
+		}
 		Wave = new Wave[NumOfWaves];
 		
 		// Reading waves stats
-		levelsList = xmlDoc.GetElementsByTagName(@"wave"); // array of the level nodes.
-		int index = 0;
+		int index = 0;		
 		foreach (XmlNode levelInfo in levelsList)
   		{
 			Wave wave = new Wave();
