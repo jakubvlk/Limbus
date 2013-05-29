@@ -335,6 +335,12 @@ public class InGameGUI : MonoBehaviour
 					selectedTower.GetComponent<Tower>().Destroy();
 					ToggleUpgrade();
 					break;
+				case "btn_Pause":
+					DoPauseToggle();
+					break;
+				case "btn_DoubleSpeed":
+					DoubleTime();
+					break;
 			}
 		}
 	}
@@ -423,13 +429,15 @@ public class InGameGUI : MonoBehaviour
 			AudioListener.pause = true;
 			pauseMenu.SetActive(true);
 			guiMode = GUIMode.GUIMode_Paused;
-			CancelBuildMode ();
+			CancelBuildMode ();			
 		}
 		else
 		{
 			Time.timeScale = 1;
 			AudioListener.pause = false;
 			pauseMenu.SetActive(false);
+			
+						DeselectTower();
 			guiMode = GUIMode.GUIMode_Running;
 		}
 	}
@@ -438,7 +446,7 @@ public class InGameGUI : MonoBehaviour
 	{
     	if(Time.timeScale == 1)
 		{
-        	Time.timeScale = 4;
+        	Time.timeScale = 2;
 			doubleSpeed.color = Color.red;
 		}
 		else
@@ -468,7 +476,7 @@ public class InGameGUI : MonoBehaviour
 		shopMenu.SetActive(!shopMenu.activeSelf);
 		
 		// switch to correct GUIMode
-		if (guiMode == GUIMode.GUIMode_Running)
+		if (guiMode == GUIMode.GUIMode_Running || guiMode == GUIMode.GUIMode_Paused)
 			guiMode = GUIMode.GUIMode_Upgrading;
 		else if (guiMode == GUIMode.GUIMode_Upgrading)
 			guiMode = GUIMode.GUIMode_Running;
