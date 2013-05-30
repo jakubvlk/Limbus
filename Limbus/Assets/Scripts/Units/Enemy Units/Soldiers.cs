@@ -17,6 +17,7 @@ public class Soldiers : EnemyUnit {
 	
 	// Update is called once per frame
 	protected override void Update () {
+		base.Update();
 		if(!animation.isPlaying)
 		animation.Play();
 	}

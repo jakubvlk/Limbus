@@ -21,11 +21,13 @@ public class Missile : MonoBehaviour {
 	{
 		minDistance = 5;
 		lifeTimer = Time.time;
+		
+		
 	}
 
 	// Update is called once per frame
 	void Update ()
-	{
+	{		
 		transform.Translate(Vector3.forward * Time.deltaTime * mySpeed);
 		if(MyTarget)
 		{

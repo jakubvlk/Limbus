@@ -13,11 +13,13 @@ public class ExtendedUnit : DefaultUnit {
 	public GameObject projectile;
 	public Transform[] muzzleTransform;
 	
-	protected Transform myTarget;	
+	public Transform myTarget;	
 	protected Quaternion desiredRotation;
 	
-	private AudioSource fireAS, turretRotationAS;
+	protected AudioSource fireAS, turretRotationAS;
 	protected float firePause, fireTimer;
+	
+	public Transform gui;
 	
 	
 	// Unit is not moving, targeting - nothing, just standing on place
@@ -96,14 +98,14 @@ public class ExtendedUnit : DefaultUnit {
 			// TODO: asi pro nektere jednotky jo a pro nektere ne (delo musi doznit v dalce, vojaci musi prestat strilet)
 			//fireAS.Stop();
 			if(turret && turretRotationSound)
-			turretRotationAS.Stop();
+				turretRotationAS.Stop();
 		}
 	}
 
 	protected virtual void Fire ()
 	{
 		// Play fire sound
-		if (!fireAS.isPlaying)
+		if (fireAS && !fireAS.isPlaying)
 			fireAS.Play();
 		
 		// Set timer and fire pause
@@ -125,7 +127,7 @@ public class ExtendedUnit : DefaultUnit {
 				GameObject newFireEffect = Instantiate(fireEffect, muzzleTransform[muzzleIndex].position, muzzleTransform[muzzleIndex].rotation) as GameObject;
 				Destroy(newFireEffect,1);
 			}
-			
+			print(this.ToString());
 		}
 		
 		
@@ -146,8 +148,14 @@ public class ExtendedUnit : DefaultUnit {
 		currHealth -= healthLost;
 		if (currHealth <= 0)
 		{
-			if(gameObject.tag == "Tower"){
-			Messenger<GameObject>.Broadcast("tower destroyed", gameObject);
+			if(gameObject.tag == "Tower")
+			{
+				//gui.GetComponent<InGameGUI>().placementOfSelectedTower.tag = @"PlacementPlane_Open";
+				//gui.GetComponent<InGameGUI>().placementOfSelectedTower = null; 
+				
+				Messenger<GameObject>.Broadcast("tower destroyed", gameObject);
+				
+				// TODO: funkce na otevreni placementPlane
 			}
 			Destroy();
 		}
@@ -155,8 +163,10 @@ public class ExtendedUnit : DefaultUnit {
 
 	public virtual void Destroy()
 	{
+		
 		Instantiate(explosion, myTransform.position, Quaternion.identity);
 		Destroy(gameObject);
+		
 	}
 	
 	protected virtual void InitSound ()

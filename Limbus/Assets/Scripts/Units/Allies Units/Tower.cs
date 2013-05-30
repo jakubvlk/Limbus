@@ -50,8 +50,8 @@ public class Tower : ExtendedUnit
 				gameMaster.Money -= newPrice;
 				
 				// higher damage
-				float damage = projectile.GetComponent<Missile>().damage;
-				projectile.GetComponent<Missile>().damage = damage * rankModifiers[rank.RankValue + 1];
+				//float damage = projectile.GetComponent<Missile>().damage;
+				//projectile.GetComponent<Missile>().damage = damage * rankModifiers[rank.RankValue + 1];
 				
 				// more health
 				maxHealth = maxHealth * rankModifiers[rank.RankValue + 1];
@@ -74,5 +74,39 @@ public class Tower : ExtendedUnit
 		{
 			return InGameGUI.UPGRADE_MAX_LVL;
 		}
+	}
+	
+	protected override void Fire ()
+	{
+		// Play fire sound
+		if (fireAS && !fireAS.isPlaying)
+			fireAS.Play();
+		
+		// Set timer and fire pause
+		fireTimer = Time.time;
+		if (fireRatePerMin <= 0)
+			fireRatePerMin = 1;
+		firePause = 60f / fireRatePerMin;
+		
+		// Fire missle
+		if (projectile)
+		{
+			int muzzleIndex = Random.Range(0, muzzleTransform.Length);
+			GameObject newMissile = Instantiate(projectile, muzzleTransform[muzzleIndex].position, muzzleTransform[muzzleIndex].rotation) as GameObject;
+			newMissile.GetComponent<Missile>().MyTarget = myTarget;
+			newMissile.GetComponent<Missile>().damage = newMissile.GetComponent<Missile>().damage * rankModifiers[rank.RankValue];
+			
+			//Fire effect
+			if(fireEffect)
+			{
+				GameObject newFireEffect = Instantiate(fireEffect, muzzleTransform[muzzleIndex].position, muzzleTransform[muzzleIndex].rotation) as GameObject;
+				Destroy(newFireEffect,1);
+			}
+		}
+		
+		
+		
+		// Get a hit
+		//myTarget.GetComponent<ExtendedUnit>().GetHit(power);
 	}
 }

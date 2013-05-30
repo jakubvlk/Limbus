@@ -29,7 +29,7 @@ public class InGameGUI : MonoBehaviour
 	private GUIMode guiMode;
 	
 	private GameObject selectedTower;
-	private GameObject placementOfSelectedTower;	
+	public GameObject placementOfSelectedTower;	
 	private GameObject newTower;
 	
 	//	Num Constants
@@ -157,7 +157,6 @@ public class InGameGUI : MonoBehaviour
 		ray = GUICameraOBJ.camera.ScreenPointToRay(Input.mousePosition);
 		if (!Physics.Raycast(ray, out hit, 1000, nguiLayerMask))
 		{
-			//print( Vector3.Distance(ray.origin, hit.collider.gameObject.transform.position));
 			ToggleUpgrade();
 			selectedTower = null;
 		}
@@ -219,7 +218,6 @@ public class InGameGUI : MonoBehaviour
 		// enough money?..
 		if (gameMaster.Money >= allStructures[structureIndex].GetComponent<Tower>().price)
 		{		
-			print (lastHitObj.tag);
 			if (lastHitObj.tag == "PlacementPlane_Open")
 			{
 				GameObject newStructure = Instantiate(towersPool[structureIndex]) as GameObject;
@@ -407,8 +405,8 @@ public class InGameGUI : MonoBehaviour
 		{
 			buildBtnGraphics[structureIndex].color = onColor;
 		}
-		
-		waveText.text = @"Wave: " + (gameMaster.NumOfWaves + 1) + @"/10";
+		if (gameMaster.NumOfWaves + 1 <= 10)
+			waveText.text = @"Wave: " + (gameMaster.NumOfWaves + 1) + @"/10";
 		scoreText.text = @"Score: " + gameMaster.Score;
 		moneyText.text = @"Money: " + gameMaster.Money + @"$";
 		lifesText.text = @"Lifes: " + gameMaster.Lifes;

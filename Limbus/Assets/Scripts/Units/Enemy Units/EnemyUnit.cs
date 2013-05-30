@@ -56,8 +56,9 @@ public class EnemyUnit : ExtendedUnit
 		myTransform.LookAt(pathManager.CurrentWaypoint.position);
 		
 		// Play moving units sound
-		if(movingAS){
-		movingAS.Play();
+		if(movingAS)
+		{
+			movingAS.Play();
 		}
 	}
 	
@@ -66,6 +67,7 @@ public class EnemyUnit : ExtendedUnit
 	{
 		base.Update();
 		Move();
+		
 	}
 	
 	protected override void OnTriggerStay(Collider other)

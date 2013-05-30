@@ -1,22 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUIs\InGameGUI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Units\Enemy Units\EnemyUnit.cs">
     <Files>
-      <File FileName="Assets\Scripts\GUIs\InGameGUI.cs" Line="218" Column="4" />
-      <File FileName="Assets\Scripts\GameMaster.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Units\Base\Base.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Units\Allies Units\Tower.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Missile.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Units\Enemy Units\EnemyUnit.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Units\ExtendedUnit.cs" Line="146" Column="28" />
-      <File FileName="Assets\Scripts\Callback.cs" Line="8" Column="64" />
-      <File FileName="Assets\Scripts\Messenger.cs" Line="218" Column="2" />
-      <File FileName="Assets\XMLs\level1_waves.xml" Line="9" Column="16" />
+      <File FileName="Assets\Scripts\Units\ExtendedUnit.cs" Line="16" Column="29" />
+      <File FileName="Assets\Scripts\Units\Enemy Units\EnemyUnit.cs" Line="39" Column="22" />
+      <File FileName="Assets\Scripts\Units\Enemy Units\GroupOfSoldiers.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\jakvl_000\Documents\GitHub\Limbus\Limbus\Assets\Scripts\GameMaster.cs" line="111" />
+      <Breakpoint file="C:\Users\jakvl_000\Documents\GitHub\Limbus\Limbus\Assets\Scripts\Units\ExtendedUnit.cs" line="106" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
