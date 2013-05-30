@@ -313,12 +313,14 @@ public class InGameGUI : MonoBehaviour
 		}
 		else if (guiMode == GUIMode.GUIMode_Upgrading)
 		{
+			// Tower was destroyed during upgrade
 			if (!selectedTower)
 			{
 				ToggleUpgrade();
 				selectedTower = null;
 				return;
 			}
+			
 			switch (btnObj.name)
 			{	
 				case "btn_Upgrade":

@@ -109,4 +109,10 @@ public class Tower : ExtendedUnit
 		// Get a hit
 		//myTarget.GetComponent<ExtendedUnit>().GetHit(power);
 	}
+	
+	public override void Destroy ()
+	{
+		base.Destroy ();
+		
+	}
 }

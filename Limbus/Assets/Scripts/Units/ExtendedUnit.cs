@@ -19,7 +19,9 @@ public class ExtendedUnit : DefaultUnit {
 	protected AudioSource fireAS, turretRotationAS;
 	protected float firePause, fireTimer;
 	
-	public Transform gui;
+	public ParticleEmitter smokeTrail;
+	
+	
 	
 	
 	// Unit is not moving, targeting - nothing, just standing on place
@@ -153,6 +155,17 @@ public class ExtendedUnit : DefaultUnit {
 				Messenger<GameObject>.Broadcast("tower destroyed", gameObject);
 			}
 			Destroy();
+		}
+		else if (smokeTrail)
+		{
+			if( currHealth / maxHealth <= .75) //health is less than half
+			{
+				smokeTrail.emit = true;
+			}
+			else
+			{
+				smokeTrail.emit = false;
+			}
 		}
 	}
 
