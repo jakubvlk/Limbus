@@ -313,8 +313,14 @@ public class InGameGUI : MonoBehaviour
 		}
 		else if (guiMode == GUIMode.GUIMode_Upgrading)
 		{
-			switch (btnObj.name)
+			if (!selectedTower)
 			{
+				ToggleUpgrade();
+				selectedTower = null;
+				return;
+			}
+			switch (btnObj.name)
+			{	
 				case "btn_Upgrade":
 					string respond = selectedTower.GetComponent<Tower>().Promote();
 					if (respond == string.Empty)
