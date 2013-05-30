@@ -11,7 +11,11 @@ public class GroupOfSoldiers : EnemyUnit {
 		if(transform.childCount == 0)
 		{
 			//need to destroy parent object, because single soldiers are standalone objects
-			gameMaster.NumOfActiveUnits--;	
+			if(gameMaster.NumOfActiveUnits > 0)
+			{
+				gameMaster.NumOfActiveUnits--;
+			}
+
 			Destroy(gameObject);
 		}
 		

@@ -51,7 +51,7 @@ public class ExtendedUnit : DefaultUnit {
 				turret.rotation = Quaternion.Lerp(turret.rotation, desiredRotation, Time.deltaTime * turretRotationSpeed);
 				
 				// Play turret rotation sound
-				if (!turretRotationAS.isPlaying)
+				if (turretRotationAS && !turretRotationAS.isPlaying)
 					turretRotationAS.Play();
 			}
 			
@@ -150,12 +150,7 @@ public class ExtendedUnit : DefaultUnit {
 		{
 			if(gameObject.tag == "Tower")
 			{
-				//gui.GetComponent<InGameGUI>().placementOfSelectedTower.tag = @"PlacementPlane_Open";
-				//gui.GetComponent<InGameGUI>().placementOfSelectedTower = null; 
-				
 				Messenger<GameObject>.Broadcast("tower destroyed", gameObject);
-				
-				// TODO: funkce na otevreni placementPlane
 			}
 			Destroy();
 		}

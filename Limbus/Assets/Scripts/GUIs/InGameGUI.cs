@@ -164,7 +164,7 @@ public class InGameGUI : MonoBehaviour
 	
 	private void OpenPlacementPlane(Vector3 towerPosition)
 	{		
-		Ray ray = Camera.main.ScreenPointToRay(new Vector3(towerPosition.x, towerPosition.y + 20, towerPosition.z));
+		Ray ray = Camera.main.ScreenPointToRay(towerPosition);
 		
 		RaycastHit hit;
 		
