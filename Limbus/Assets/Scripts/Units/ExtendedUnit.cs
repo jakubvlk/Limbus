@@ -13,7 +13,7 @@ public class ExtendedUnit : DefaultUnit {
 	public GameObject projectile;
 	public Transform[] muzzleTransform;
 	
-	public Transform myTarget;	
+	protected Transform myTarget;	
 	protected Quaternion desiredRotation;
 	
 	protected AudioSource fireAS, turretRotationAS;
@@ -57,29 +57,39 @@ public class ExtendedUnit : DefaultUnit {
 					turretRotationAS.Play();
 			}
 			
-			float direction;			
-			// Restriction of fire angle
-			// TMP - so far, not all of units have turrets!
-			// TODO: fix it :-)
-			if (turret)
-			{
-				Vector3 dir = (myTarget.position - turret.position).normalized;			
-				direction = Vector3.Dot(dir, turret.forward);
-			}
-			else
-			{
-				Vector3 dir = (myTarget.position - myTransform.position).normalized;			
-				direction = Vector3.Dot(dir, myTransform.forward);
-			}
-			
-			// If timer is OK and the target is infront of us!
-			if (Time.time >= fireTimer + firePause && direction > 0.9f)
-			{
-				Fire();
-			}
+			FireInFrontOf ();
+		}
+		else
+		{
+			if(turret && turretRotationSound && turretRotationAS.isPlaying)
+				turretRotationAS.Stop();
 		}
 		
 		
+	}
+
+	protected virtual void FireInFrontOf ()
+	{
+		float direction;			
+		// Restriction of fire angle
+		// TMP - so far, not all of units have turrets!
+		// TODO: fix it :-)
+		if (turret)
+		{
+			Vector3 dir = (myTarget.position - turret.position).normalized;			
+			direction = Vector3.Dot(dir, turret.forward);
+		}
+		else
+		{
+			Vector3 dir = (myTarget.position - myTransform.position).normalized;			
+			direction = Vector3.Dot(dir, myTransform.forward);
+		}
+		
+		// If timer is OK and the target is infront of us!
+		if (Time.time >= fireTimer + firePause && direction > 0.9f)
+		{
+			Fire();
+		}
 	}
 	
 	protected virtual void OnTriggerStay(Collider other)
@@ -158,13 +168,9 @@ public class ExtendedUnit : DefaultUnit {
 		}
 		else if (smokeTrail)
 		{
-			if( currHealth / maxHealth <= .75) //health is less than half
+			if( currHealth / maxHealth <= .33f) //health is less than half
 			{
 				smokeTrail.emit = true;
-			}
-			else
-			{
-				smokeTrail.emit = false;
 			}
 		}
 	}

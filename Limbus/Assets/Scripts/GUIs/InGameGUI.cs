@@ -226,6 +226,7 @@ public class InGameGUI : MonoBehaviour
 				lastHitObj.tag = "PlacementPlane_Closed";
 				
 				gameMaster.Money -= allStructures[structureIndex].GetComponent<Tower>().price;
+				newStructure.GetComponent<Tower>().MyPlacement = lastHitObj;
 				UpdateGUI();
 			}
 			else
@@ -335,9 +336,7 @@ public class InGameGUI : MonoBehaviour
 					}
 					break;
 				case "btn_Delete":
-					//OpenPlacementPlane(selectedTower.transform.position);
-					placementOfSelectedTower.tag = @"PlacementPlane_Open";
-					placementOfSelectedTower = null;
+					selectedTower.GetComponent<Tower>().MyPlacement.tag = @"PlacementPlane_Open";
 					selectedTower.GetComponent<Tower>().Destroy();
 					ToggleUpgrade();
 					break;

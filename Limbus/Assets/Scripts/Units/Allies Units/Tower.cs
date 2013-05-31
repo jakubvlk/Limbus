@@ -20,6 +20,11 @@ public class Tower : ExtendedUnit
 		get { return rank.RankValue; }
 	}
 	
+	public GameObject MyPlacement {
+		get;
+		set;
+	}
+	
 	#endregion
 	
 	protected override void Start()
@@ -63,7 +68,12 @@ public class Tower : ExtendedUnit
 				// It has to be like last!!! (coz RankValue + 1)
 				rank.Promote();
 				
+				if (smokeTrail)
+					smokeTrail.emit = false;
+				
 				return string.Empty;
+				
+				
 			}
 			else
 			{
@@ -112,7 +122,7 @@ public class Tower : ExtendedUnit
 	
 	public override void Destroy ()
 	{
-		base.Destroy ();
-		
+		MyPlacement.tag = @"PlacementPlane_Open";
+		base.Destroy ();				
 	}
 }

@@ -23,8 +23,29 @@ public class Soldiers : EnemyUnit {
 	}
 	
 	
-	protected override void InitSound ()
+	protected override void FireInFrontOf ()
 	{
+		float direction;			
+		// Restriction of fire angle
+		// TMP - so far, not all of units have turrets!
+		// TODO: fix it :-)
+		if (turret)
+		{
+			Vector3 dir = (myTarget.position - turret.position).normalized;			
+			direction = Vector3.Dot(dir, turret.forward);
+		}
+		else
+		{
+			Vector3 dir = (myTarget.position - myTransform.position).normalized;			
+			direction = Vector3.Dot(dir, myTransform.forward);
+		}
 		
+		// If timer is OK and the target is infront of us!
+		if (Time.time >= fireTimer + firePause && direction > 0)
+		{
+			Fire();
+		}
 	}
+	
+	
 }
